@@ -9,6 +9,11 @@
 import UIKit
 import Photos
 
+protocol CBPhotoPickerViewControllerDelegate {
+    func handleCancel()
+    func handleSuccess(resultImage: UIImage?)
+}
+
 public class CBPhotoPickerViewController: UIViewController {
     
     static let kReuseIdentifier = "cbPhotoPickerCell"
@@ -23,6 +28,8 @@ public class CBPhotoPickerViewController: UIViewController {
     var originalFrame : CGRect
     var imageAspectRatio : CGFloat
 
+    var delegate : CBPhotoPickerViewControllerDelegate?
+    
     public required init(frame: CGRect, aspectRatio: CGFloat) {
         originalFrame = frame
         if aspectRatio <= 0 {
@@ -74,6 +81,9 @@ public class CBPhotoPickerViewController: UIViewController {
         }
         
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleExit:")
+        tapGestureRecognizer.numberOfTapsRequired = 3
+        previewImageView?.addGestureRecognizer(tapGestureRecognizer)
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
         
         photoCollectionView?.registerNib(UINib(nibName: "CBPhotoPickerCell", bundle: nil), forCellWithReuseIdentifier: "cbPhotoPickerCell")
@@ -87,26 +97,16 @@ public class CBPhotoPickerViewController: UIViewController {
         previewPhotoFrame = previewImageView?.frame ?? CGRectZero
     }
     
-    func cropToOverlayView(imageToCrop:UIImage, toRect rect:CGRect) -> UIImage {
-        let imageRef:CGImageRef = CGImageCreateWithImageInRect(imageToCrop.CGImage, rect)!
-        let cropped:UIImage = UIImage(CGImage:imageRef)
-        return cropped
+    public func handleDone() -> UIImage? {
+        if let image = self.previewImageView?.capture() {
+            return image
+        }
+        return nil
     }
     
-    func nextButtonPressed(sender: AnyObject) {
-        
-        // TEMP... why no worky? Method doesn't even fire. Also wondering why these are all under extensions?
-        // THIS IS WHERE WE CROP THE IMAGE FROM THE SNAPSHOT OF THE VIEW
-        // Extensions are used to simplify the class logic to only view lifecycle stuff, and other code can live in the extension with the appropriate delegate/datasource impl. I just think it makes the code easier to read and sort through
-        let pickedImage = view.snapshot
-        let croppedImage : UIImage = cropToOverlayView(pickedImage, toRect: CGRectMake(0, 120, 2*pickedImage.size.width, 2*pickedImage.size.width/2))
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        let destinationPath = documentsPath.stringByAppendingString("discoveryFeedImage.png")
-        print("++++++++++++++: \(destinationPath)")
-        UIImagePNGRepresentation(croppedImage)?.writeToFile(destinationPath, atomically: true)
-        
+    public func handleExit(recognizer: UIGestureRecognizer) {
+        delegate?.handleSuccess(handleDone())
     }
-    
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
@@ -147,7 +147,7 @@ extension CBPhotoPickerViewController : UICollectionViewDataSource, UICollection
             CBPhotoLibraryManager.sharedInstance.thumbnailAtIndex(indexPath.item, size: CGSizeMake(view.bounds.width, view.bounds.width), completion: {
                 (asset: PHAsset, image: UIImage?) in
                 if let image = image {
-                    self.previewImageView?.transform = CGAffineTransformIdentity
+                    self.previewImageView?.imageView?.transform = CGAffineTransformIdentity
                     self.previewImageView?.imageView?.image = image
                 }
                 

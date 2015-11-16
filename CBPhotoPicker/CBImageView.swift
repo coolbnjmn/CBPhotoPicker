@@ -8,6 +8,12 @@
 
 import UIKit
 
+extension CGRect {
+    func scale(scale: CGFloat) -> CGRect {
+        return CGRectMake(origin.x * scale, origin.y * scale, size.width * scale, size.height * scale)
+    }
+}
+
 public class CBImageView: UIView {
     var imageView: UIImageView?
     var overlayView : CBOverlayView?
@@ -20,7 +26,7 @@ public class CBImageView: UIView {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func setup() {
         imageView = UIImageView(frame: self.frame)
         overlayView = CBOverlayView(frame: self.frame)
@@ -46,9 +52,11 @@ public class CBImageView: UIView {
         let touchGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleTap:")
         touchGestureRecognizer.minimumPressDuration = 0.3
         self.addGestureRecognizer(touchGestureRecognizer)
-
     }
     
+    public func capture() -> UIImage? {
+        return self.snapshot
+    }
     
     func handlePinch(recognizer: UIPinchGestureRecognizer) {
         let state : UIGestureRecognizerState = recognizer.state
@@ -57,9 +65,14 @@ public class CBImageView: UIView {
             let scale = recognizer.scale
             if let view = recognizer.view as? CBImageView,
                 let imageView = view.imageView {
+                    view.overlayView?.alpha = 1
                     imageView.transform = CGAffineTransformScale(imageView.transform, scale, scale)
             }
             recognizer.scale = 1.0
+        } else if state == .Ended {
+            if let view = recognizer.view as? CBImageView {
+                view.overlayView?.alpha = 0
+            }
         }
     }
     
@@ -70,9 +83,14 @@ public class CBImageView: UIView {
             let rotation = recognizer.rotation
             if let view = recognizer.view as? CBImageView,
                 let imageView = view.imageView {
+                    view.overlayView?.alpha = 1
                     imageView.transform = CGAffineTransformRotate(imageView.transform, rotation)
             }
             recognizer.rotation = 0
+        } else if state == .Ended {
+            if let view = recognizer.view as? CBImageView {
+                view.overlayView?.alpha = 0
+            }
         }
     }
     
