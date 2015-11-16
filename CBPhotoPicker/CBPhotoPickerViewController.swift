@@ -14,7 +14,6 @@ public class CBPhotoPickerViewController: UIViewController {
     static let kReuseIdentifier = "cbPhotoPickerCell"
     
     var previewImageView: UIImageView?
-    var photoPickerView: UIView?
     var photoCollectionView: UICollectionView?
     
     var previewPhotoFrame : CGRect = CGRectZero
@@ -33,10 +32,12 @@ public class CBPhotoPickerViewController: UIViewController {
         view = UIView(frame: originalFrame)
         previewImageView = UIImageView(frame: CGRectMake(0, 0, originalFrame.width, originalFrame.height/2))
         previewImageView?.backgroundColor = UIColor.redColor()
+        previewImageView?.userInteractionEnabled = true
         photoCollectionViewFlowLayout = UICollectionViewFlowLayout()
         photoCollectionViewFlowLayout?.itemSize = CGSizeMake(originalFrame.width/3, originalFrame.width/3)
+        photoCollectionViewFlowLayout?.minimumInteritemSpacing = 0
+        photoCollectionViewFlowLayout?.minimumLineSpacing = 0
         photoCollectionView = UICollectionView(frame: CGRectMake(0, originalFrame.height/2, originalFrame.width, originalFrame.height/2), collectionViewLayout: photoCollectionViewFlowLayout ?? UICollectionViewFlowLayout())
-        photoPickerView = UIView(frame: CGRectMake(0, 0, originalFrame.width, originalFrame.height/2))
         photoCollectionView?.backgroundColor = UIColor.clearColor()
         if let previewImageView = previewImageView {
             view.addSubview(previewImageView)
@@ -45,9 +46,7 @@ public class CBPhotoPickerViewController: UIViewController {
             view.addSubview(photoCollectionView)
  
         }
-        if let photoPickerView = photoPickerView {
-            view.addSubview(photoPickerView)
-        }
+       
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -65,17 +64,21 @@ public class CBPhotoPickerViewController: UIViewController {
             photoCollectionView.dataSource = self
         }
         
-//        view.sendSubviewToBack(previewImageView)
+        
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
         
-        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: "handlePinch:")
-        previewImageView?.addGestureRecognizer(pinchGestureRecognizer)
+        if let previewImageView = previewImageView {
+            let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: "handlePinch:")
+            previewImageView.addGestureRecognizer(pinchGestureRecognizer)
+            
+            let rotationGestureRecognizer = UIRotationGestureRecognizer(target: self, action: "handleRotate:")
+            previewImageView.addGestureRecognizer(rotationGestureRecognizer)
+            
+            let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
+            previewImageView.addGestureRecognizer(panGestureRecognizer)
+            view.sendSubviewToBack(previewImageView)
+        }
         
-        let rotationGestureRecognizer = UIRotationGestureRecognizer(target: self, action: "handleRotate:")
-        previewImageView?.addGestureRecognizer(rotationGestureRecognizer)
-        
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
-        previewImageView?.addGestureRecognizer(panGestureRecognizer)
         photoCollectionView?.registerNib(UINib(nibName: "CBPhotoPickerCell", bundle: nil), forCellWithReuseIdentifier: "cbPhotoPickerCell")
         super.viewDidLoad()
 
@@ -152,7 +155,15 @@ extension CBPhotoPickerViewController : UICollectionViewDataSource, UICollection
         public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             return photoAsset?.count ?? 0
         }
-        
+    
+        public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+            return UIEdgeInsetsMake(0,0,0,0) //top,left,bottom,right
+        }
+    
+        public  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+            return CGSizeMake(collectionView.bounds.width/3, collectionView.bounds.width/3)
+        }
+    
         public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CBPhotoPickerViewController.kReuseIdentifier, forIndexPath: indexPath) as? CBPhotoPickerCell
             
