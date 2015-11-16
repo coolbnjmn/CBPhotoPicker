@@ -8,7 +8,7 @@ s.summary = "CBPhotoPicker is a customizable photo picker view controller for iO
 s.requires_arc = true
 
 # 2
-s.version = "0.1.4"
+s.version = "0.1.5"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -30,5 +30,5 @@ s.framework = "UIKit"
 s.source_files = "CBPhotoPicker/**/*.{swift}"
 
 # 9
-# s.resources = "CBPhotoPicker/**/*.{png,jpeg,jpg,storyboard,xib}"
+s.resources = "CBPhotoPicker/**/*.{png,jpeg,jpg,storyboard,xib}"
 end
