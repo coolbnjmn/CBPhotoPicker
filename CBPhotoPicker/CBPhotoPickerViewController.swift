@@ -13,44 +13,53 @@ public class CBPhotoPickerViewController: UIViewController {
     
     static let kReuseIdentifier = "cbPhotoPickerCell"
     
-    var previewImageView: UIImageView?
+    var previewImageView: CBImageView?
     var photoCollectionView: UICollectionView?
-    
     var previewPhotoFrame : CGRect = CGRectZero
     
     var photoCollectionViewFlowLayout: UICollectionViewFlowLayout?
     var photoAsset : PHFetchResult?
 
     var originalFrame : CGRect
+    var imageAspectRatio : CGFloat
 
-    public required init(frame: CGRect) {
+    public required init(frame: CGRect, aspectRatio: CGFloat) {
         originalFrame = frame
+        if aspectRatio <= 0 {
+            imageAspectRatio = 1
+        } else {
+            imageAspectRatio = aspectRatio  
+        }
         super.init(nibName: nil, bundle: nil)
     }
     
     public override func loadView() {
         view = UIView(frame: originalFrame)
-        previewImageView = UIImageView(frame: CGRectMake(0, 0, originalFrame.width, originalFrame.height/2))
-        previewImageView?.backgroundColor = UIColor.redColor()
+        let previewImageHeight : CGFloat = originalFrame.width/imageAspectRatio
+        previewImageView = CBImageView(frame: CGRectMake(0, 0, originalFrame.width, previewImageHeight))
         previewImageView?.userInteractionEnabled = true
+        previewImageView?.imageView?.contentMode = .ScaleAspectFit
+        previewImageView?.backgroundColor = UIColor.clearColor()
         photoCollectionViewFlowLayout = UICollectionViewFlowLayout()
         photoCollectionViewFlowLayout?.itemSize = CGSizeMake(originalFrame.width/3, originalFrame.width/3)
         photoCollectionViewFlowLayout?.minimumInteritemSpacing = 0
         photoCollectionViewFlowLayout?.minimumLineSpacing = 0
-        photoCollectionView = UICollectionView(frame: CGRectMake(0, originalFrame.height/2, originalFrame.width, originalFrame.height/2), collectionViewLayout: photoCollectionViewFlowLayout ?? UICollectionViewFlowLayout())
-        photoCollectionView?.backgroundColor = UIColor.clearColor()
+        photoCollectionView = UICollectionView(frame: CGRectMake(0, previewImageHeight, originalFrame.width, originalFrame.height-previewImageHeight), collectionViewLayout: photoCollectionViewFlowLayout ?? UICollectionViewFlowLayout())
+        photoCollectionView?.backgroundColor = UIColor.darkGrayColor()
+        
+        
         if let previewImageView = previewImageView {
             view.addSubview(previewImageView)
         }
         if let photoCollectionView = photoCollectionView {
             view.addSubview(photoCollectionView)
- 
         }
-       
+        
     }
 
     required public init?(coder aDecoder: NSCoder) {
         self.originalFrame = CGRectZero
+        self.imageAspectRatio = 1
         super.init(coder: aDecoder)
     }
     
@@ -66,18 +75,6 @@ public class CBPhotoPickerViewController: UIViewController {
         
         
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
-        
-        if let previewImageView = previewImageView {
-            let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: "handlePinch:")
-            previewImageView.addGestureRecognizer(pinchGestureRecognizer)
-            
-            let rotationGestureRecognizer = UIRotationGestureRecognizer(target: self, action: "handleRotate:")
-            previewImageView.addGestureRecognizer(rotationGestureRecognizer)
-            
-            let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
-            previewImageView.addGestureRecognizer(panGestureRecognizer)
-            view.sendSubviewToBack(previewImageView)
-        }
         
         photoCollectionView?.registerNib(UINib(nibName: "CBPhotoPickerCell", bundle: nil), forCellWithReuseIdentifier: "cbPhotoPickerCell")
         super.viewDidLoad()
@@ -110,41 +107,6 @@ public class CBPhotoPickerViewController: UIViewController {
         
     }
     
-    func handlePinch(recognizer: UIPinchGestureRecognizer) {
-        let state : UIGestureRecognizerState = recognizer.state
-        
-        if state == .Began || state == .Changed {
-            let scale = recognizer.scale
-            if let view = recognizer.view {
-                view.transform = CGAffineTransformScale(view.transform, scale, scale)
-            }
-            recognizer.scale = 1.0
-        }
-    }
-    
-    func handleRotate(recognizer: UIRotationGestureRecognizer) {
-        let state : UIGestureRecognizerState = recognizer.state
-        
-        if state == .Began || state == .Changed {
-            let rotation = recognizer.rotation
-            if let view = recognizer.view {
-                view.transform = CGAffineTransformRotate(view.transform, rotation)
-            }
-            recognizer.rotation = 0
-        }
-    }
-    
-    
-    func handlePan(recognizer: UIPanGestureRecognizer) {
-        let state : UIGestureRecognizerState = recognizer.state
-        
-        if let view = recognizer.view where state == .Began || state == .Changed {
-            let translation = recognizer.translationInView(view)
-            view.transform = CGAffineTransformTranslate(view.transform, translation.x, translation.y)
-            recognizer.setTranslation(CGPointZero, inView: view)
-        }
-        
-    }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
@@ -185,13 +147,22 @@ extension CBPhotoPickerViewController : UICollectionViewDataSource, UICollection
             CBPhotoLibraryManager.sharedInstance.thumbnailAtIndex(indexPath.item, size: CGSizeMake(view.bounds.width, view.bounds.width), completion: {
                 (asset: PHAsset, image: UIImage?) in
                 if let image = image {
-                    if image != self.previewImageView?.image {
-                        self.previewImageView?.transform = CGAffineTransformIdentity
-                    }
-                    self.previewImageView?.image = image
-                    
+                    self.previewImageView?.transform = CGAffineTransformIdentity
+                    self.previewImageView?.imageView?.image = image
+                }
+                
+                if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
+                    cell.layer.borderColor = UIColor.blueColor().CGColor
+                    cell.layer.borderWidth = 2
                 }
             })
+        }
+    
+        public func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+            if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
+                cell.layer.borderWidth = 0
+                cell.layer.borderColor = UIColor.clearColor().CGColor
+            }
         }
     }
 

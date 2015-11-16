@@ -18,10 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         if let window = window {
-            window.rootViewController = CBPhotoPickerViewController(frame: UIScreen.mainScreen().bounds)
+            window.rootViewController = CBPhotoPickerViewController(frame: UIScreen.mainScreen().bounds, aspectRatio: 2)
         } else {
             window = UIWindow(frame: UIScreen.mainScreen().bounds)
-            window?.rootViewController = CBPhotoPickerViewController(frame: UIScreen.mainScreen().bounds)
+            window?.rootViewController = CBPhotoPickerViewController(frame: UIScreen.mainScreen().bounds, aspectRatio: 2)
         }
         print(window?.rootViewController)
         window?.makeKeyAndVisible()
