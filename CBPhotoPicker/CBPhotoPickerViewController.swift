@@ -9,8 +9,26 @@
 import UIKit
 import Photos
 
-protocol CBPhotoPickerViewControllerDelegate {
+public protocol CBPhotoPickerViewControllerDelegate {
+    /**
+     handleCancel
+     
+     Delegate method used when the photo picker cancels it's operations. Not used right now
+     - Parameters : none
+     - Returns: none
+    */
     func handleCancel()
+    
+    /**
+    handleSuccess
+
+    Delegate method used to return a cropped image to the presenting view controller. Used right now on a triple tap on the iamge view
+    - Parameters : 
+        - resultImage : UIImage that is the cropped image in the right aspect ratio
+
+    - Returns: 
+        none
+    */
     func handleSuccess(resultImage: UIImage?)
 }
 
@@ -30,6 +48,18 @@ public class CBPhotoPickerViewController: UIViewController {
 
     var delegate : CBPhotoPickerViewControllerDelegate?
     
+    /**
+     init
+     Init -- this is how to create a photo picker!
+     Pass in the size you want it to be (probably the presenting view controller's frame), and an aspect ratio for the image you're looking to pick. This value can be 1 for a 1:1 image, 1.33 for a 4:3 image, or whatever value you want!
+     The views will properly resize to only show a preview view the size the final image would be. 
+     
+     - Parameters: 
+        - frame: The frame of the view controller to create
+        - aspectRatio: The aspect ratio of the image to pick, which is what the return image will be cropped as
+     
+     - Returns: A brand new photo picker
+    */
     public required init(frame: CGRect, aspectRatio: CGFloat) {
         originalFrame = frame
         if aspectRatio <= 0 {
@@ -40,6 +70,9 @@ public class CBPhotoPickerViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    /**
+     Method that overrides normal load view, and this creates the main view for this view controller, and sets up all the views
+    */
     public override func loadView() {
         view = UIView(frame: originalFrame)
         let previewImageHeight : CGFloat = originalFrame.width/imageAspectRatio
@@ -64,6 +97,11 @@ public class CBPhotoPickerViewController: UIViewController {
         
     }
 
+    /**
+    init
+     
+     required init for all view controllers, but don't use this one! You need a frame for a photo picker to work!
+     */
     required public init?(coder aDecoder: NSCoder) {
         self.originalFrame = CGRectZero
         self.imageAspectRatio = 1
