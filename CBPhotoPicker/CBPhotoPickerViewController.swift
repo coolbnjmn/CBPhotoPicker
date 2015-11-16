@@ -46,7 +46,7 @@ public class CBPhotoPickerViewController: UIViewController {
     var originalFrame : CGRect
     var imageAspectRatio : CGFloat
 
-    var delegate : CBPhotoPickerViewControllerDelegate?
+    public var delegate : CBPhotoPickerViewControllerDelegate?
     
     /**
      init
