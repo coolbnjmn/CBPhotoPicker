@@ -34,3 +34,8 @@ As of right now, if you don't provide you're own dismissal strategy, triple tap 
 
 ### Delegate
 The class presenting the above photo picker needs to conforming to `CBPhotoPickerViewControllerDelegate` protocol, which involves two methods. The `handleCancel()` method right now doesn't do anything, but the `handleSuccess` method will properly give you the result image when the photo picker is dismissed. 
+
+
+## CHANGELOG
+### v0.1.7
+Added a push behavior to bring all images that go off screen back into the view. I think there is a bug where if it's zoomed in you lose the zoom state, but otherwise it works! 

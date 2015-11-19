@@ -78,7 +78,7 @@ public class CBPhotoPickerViewController: UIViewController {
         let previewImageHeight : CGFloat = originalFrame.width/imageAspectRatio
         previewImageView = CBImageView(frame: CGRectMake(0, 0, originalFrame.width, previewImageHeight))
         previewImageView?.userInteractionEnabled = true
-        previewImageView?.imageView?.contentMode = .ScaleAspectFit
+        previewImageView?.imageView?.contentMode = .ScaleAspectFill
         previewImageView?.backgroundColor = UIColor.clearColor()
         photoCollectionViewFlowLayout = UICollectionViewFlowLayout()
         photoCollectionViewFlowLayout?.itemSize = CGSizeMake(originalFrame.width/3, originalFrame.width/3)

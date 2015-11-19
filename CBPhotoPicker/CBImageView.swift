@@ -17,6 +17,8 @@ extension CGRect {
 public class CBImageView: UIView {
     var imageView: UIImageView?
     var overlayView : CBOverlayView?
+    var animator : UIDynamicAnimator?
+    var scale : CGFloat = 1
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,6 +65,7 @@ public class CBImageView: UIView {
         
         if state == .Began || state == .Changed {
             let scale = recognizer.scale
+            self.scale *= scale
             if let view = recognizer.view as? CBImageView,
                 let imageView = view.imageView {
                     view.overlayView?.alpha = 1
@@ -72,6 +75,22 @@ public class CBImageView: UIView {
         } else if state == .Ended {
             if let view = recognizer.view as? CBImageView {
                 view.overlayView?.alpha = 0
+            }
+            if let imageView = imageView {
+                if shouldSnap(imageView.frame, superFrame: frame) {
+                    let pushBehavior : UIPushBehavior = UIPushBehavior(items: [imageView], mode: UIPushBehaviorMode.Continuous)
+                    pushBehavior.setTargetOffsetFromCenter(UIOffset(horizontal: 0, vertical: 0), forItem: imageView)
+                    if let animator = self.animator {
+                        animator.removeAllBehaviors()
+                        animator.addBehavior(pushBehavior)
+                    } else {
+                        if let superview = self.superview {
+                            self.animator = UIDynamicAnimator(referenceView: superview)
+                            self.animator?.addBehavior(pushBehavior)
+                        }
+                    }
+                    imageView.transform = CGAffineTransformScale(imageView.transform, scale, scale)
+                }
             }
         }
     }
@@ -100,13 +119,30 @@ public class CBImageView: UIView {
         
         if let view = recognizer.view as? CBImageView, let imageView = view.imageView where state == .Began || state == .Changed {
             let translation = recognizer.translationInView(view)
-            imageView.transform = CGAffineTransformTranslate(imageView.transform, translation.x, translation.y)
+            imageView.transform = CGAffineTransformTranslate(CGAffineTransformScale(imageView.transform, 1, 1), translation.x, translation.y)
             view.overlayView?.alpha = 1
             recognizer.setTranslation(CGPointZero, inView: imageView)
         } else if let view = recognizer.view as? CBImageView where state == .Ended {
             view.overlayView?.alpha = 0
+            
+            if let imageView = imageView {
+                if shouldSnap(imageView.frame, superFrame: frame) {
+                    let pushBehavior : UIPushBehavior = UIPushBehavior(items: [imageView], mode: UIPushBehaviorMode.Continuous)
+                    pushBehavior.setTargetOffsetFromCenter(UIOffset(horizontal: 0, vertical: 0), forItem: imageView)
+                    if let animator = self.animator {
+                        animator.removeAllBehaviors()
+                        animator.addBehavior(pushBehavior)
+                    } else {
+                        if let superview = self.superview {
+                            self.animator = UIDynamicAnimator(referenceView: superview)
+                            self.animator?.addBehavior(pushBehavior)
+                        }
+                    }
+                    imageView.transform = CGAffineTransformScale(imageView.transform, scale, scale)
+                }
+            }
+
         }
-        
     }
     
     func handleTap(recognizer: UILongPressGestureRecognizer) {
@@ -117,6 +153,13 @@ public class CBImageView: UIView {
         } else if let view = recognizer.view as? CBImageView {
             view.overlayView?.alpha = 0
         }
+    }
+    
+    func shouldSnap(frame : CGRect, superFrame : CGRect) -> Bool {
+        if frame.origin.x > superFrame.origin.x || frame.origin.y > superFrame.origin.y || frame.origin.x+frame.size.width < superFrame.origin.x + superFrame.size.width || frame.origin.y + frame.size.height < superFrame.origin.y + superFrame.size.height {
+            return true
+        }
+        return false
     }
 }
 
