@@ -39,3 +39,32 @@ The class presenting the above photo picker needs to conforming to `CBPhotoPicke
 ## CHANGELOG
 ### v0.1.7
 Added a push behavior to bring all images that go off screen back into the view. I think there is a bug where if it's zoomed in you lose the zoom state, but otherwise it works! 
+
+### v0.1.8
+BREAKING CHANGES -- you now need to add 2 parameters to your calls to initialize a `CBPhotoPickerViewController`.
+
+```
+let photoPicker = CBPhotoPickerViewController(frame: view.frame, aspectRatio: 1, placeholder: nil, cbPhotoPickerStyle: style)
+photoPicker.delegate = self
+self.presentViewController(photoPicker, animated: true, completion: {})
+```
+
+The placeholder image is what is shown to your users before they choose an image. The style parameter is required, but a default style is provided. To get the style, just do:
+
+```
+let style = CBPhotoPickerStyle.defaultStyle()
+```
+
+Alternatively, if you want to customize the appearance of the photo picker (so far we've only opened up the tintColor for text/buttons, and the selectionColor of the image cells)
+
+```
+let style = CBPhotoPickerStyle.customStyle(UIColor.blueColor(), tintColor: UIColor.whiteColor())
+```
+
+Change this around to make it look however you want it to look! 
+
+
+## In the Pipeline
+- more customization of the appearance
+- the big one: better integration into projects, by making this view controller accessible to storyboards, subclassing, etc. That is in the works, and hopefully will come out soon!
+

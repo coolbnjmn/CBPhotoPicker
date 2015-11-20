@@ -32,6 +32,43 @@ public protocol CBPhotoPickerViewControllerDelegate {
     func handleSuccess(resultImage: UIImage?)
 }
 
+public class CBPhotoPickerStyle {
+    public var selectionColor : UIColor
+    public var tintColor : UIColor
+    
+    /**
+     * Basic initializer for a toast view style
+     *
+     *  ::param:: selectionColor    A UIColor to be used for the selection of items
+     *  ::param:: tintColor          A UIColor that will style the view, such as navigation title font color
+     */
+    public required init(selectionColor: UIColor, tintColor: UIColor) {
+        self.selectionColor = selectionColor
+        self.tintColor = tintColor
+    }
+    
+    /**
+     *  A class method to retrieve a default style object
+     *
+     *  ::param:: style     TutorialToastViewStyleStyle enum value, can be .Dark or .Light, anything else will return nil
+     *
+     * returns -- a TutorialToastViewStyle with the default values of Light and Dark toasts.
+     */
+    public class func defaultStyle() -> CBPhotoPickerStyle? {
+        return CBPhotoPickerStyle(selectionColor: UIColor.blueColor(), tintColor: UIColor.whiteColor())
+    }
+    
+    /**
+     *  A class method to retrieve a custom style object
+     *  ::param:: backgroundColor    A UIColor to be used for the background of the toast view
+     *  ::param:: tintColor          A UIColor that will style the toast view, such as coloring text and the close button
+     * returns -- a TutorialToastViewStyle with the specified parameters.
+     */
+    public class func customStyle(selectionColor : UIColor, tintColor : UIColor) -> CBPhotoPickerStyle? {
+        return CBPhotoPickerStyle(selectionColor: selectionColor, tintColor: tintColor)
+    }
+}
+
 public class CBPhotoPickerViewController: UIViewController {
     
     static let kReuseIdentifier = "cbPhotoPickerCell"
@@ -46,8 +83,9 @@ public class CBPhotoPickerViewController: UIViewController {
     var originalFrame : CGRect
     var imageAspectRatio : CGFloat
 
+    var placeholderImage : UIImage?
     public var delegate : CBPhotoPickerViewControllerDelegate?
-    
+    var style : CBPhotoPickerStyle
     /**
      init
      Init -- this is how to create a photo picker!
@@ -60,8 +98,10 @@ public class CBPhotoPickerViewController: UIViewController {
      
      - Returns: A brand new photo picker
     */
-    public required init(frame: CGRect, aspectRatio: CGFloat) {
+    public required init(frame: CGRect, aspectRatio: CGFloat, placeholder: UIImage?, cbPhotoPickerStyle: CBPhotoPickerStyle) {
         originalFrame = frame
+        placeholderImage = placeholder
+        style = cbPhotoPickerStyle
         if aspectRatio <= 0 {
             imageAspectRatio = 1
         } else {
@@ -105,6 +145,7 @@ public class CBPhotoPickerViewController: UIViewController {
     required public init?(coder aDecoder: NSCoder) {
         self.originalFrame = CGRectZero
         self.imageAspectRatio = 1
+        self.style = CBPhotoPickerStyle.defaultStyle()!
         super.init(coder: aDecoder)
     }
     
@@ -125,6 +166,14 @@ public class CBPhotoPickerViewController: UIViewController {
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
         
         photoCollectionView?.registerNib(UINib(nibName: "CBPhotoPickerCell", bundle: NSBundle(forClass: self.classForCoder)), forCellWithReuseIdentifier: "cbPhotoPickerCell")
+        
+        if let placeholderImage = placeholderImage {
+            previewImageView?.imageView?.image = placeholderImage
+        }
+        
+        if let navigationController = navigationController {
+            navigationController.navigationBar.tintColor = style.tintColor
+        }
         super.viewDidLoad()
 
     }
@@ -190,7 +239,7 @@ extension CBPhotoPickerViewController : UICollectionViewDataSource, UICollection
                 }
                 
                 if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
-                    cell.layer.borderColor = UIColor.blueColor().CGColor
+                    cell.layer.borderColor = self.style.selectionColor.CGColor
                     cell.layer.borderWidth = 2
                 }
             })
