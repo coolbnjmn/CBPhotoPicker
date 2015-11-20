@@ -63,6 +63,8 @@ let style = CBPhotoPickerStyle.customStyle(UIColor.blueColor(), tintColor: UICol
 
 Change this around to make it look however you want it to look! 
 
+### v0.1.9
+Fixed the constraints breaking in the background, no more annoying spam log messages!
 
 ## In the Pipeline
 - more customization of the appearance

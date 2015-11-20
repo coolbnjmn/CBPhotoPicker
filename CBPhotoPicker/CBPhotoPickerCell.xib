@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,18 +14,15 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UVu-OM-i39">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="UVu-OM-i39" secondAttribute="height" multiplier="1:1" id="inm-1F-S6S"/>
-                        </constraints>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="UVu-OM-i39" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1ss-8m-IbF"/>
-                <constraint firstAttribute="trailing" secondItem="UVu-OM-i39" secondAttribute="trailing" id="UBm-N6-dY5"/>
-                <constraint firstAttribute="bottom" secondItem="UVu-OM-i39" secondAttribute="bottom" id="XNn-Vd-Bzz"/>
-                <constraint firstItem="UVu-OM-i39" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hy5-8Y-6ot"/>
+                <constraint firstAttribute="trailing" secondItem="UVu-OM-i39" secondAttribute="trailing" id="epV-Xe-L4Z"/>
+                <constraint firstAttribute="bottom" secondItem="UVu-OM-i39" secondAttribute="bottom" id="nvH-C7-XwG"/>
+                <constraint firstItem="UVu-OM-i39" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="s2Z-si-rOB"/>
+                <constraint firstItem="UVu-OM-i39" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wav-19-3DR"/>
             </constraints>
             <connections>
                 <outlet property="cbImageView" destination="UVu-OM-i39" id="Lm1-eG-vby"/>
