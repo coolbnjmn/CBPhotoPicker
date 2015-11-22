@@ -80,12 +80,12 @@ public class CBPhotoPickerViewController: UIViewController {
     var photoCollectionViewFlowLayout: UICollectionViewFlowLayout?
     var photoAsset : PHFetchResult?
 
-    var originalFrame : CGRect
-    var imageAspectRatio : CGFloat
+    public var originalFrame : CGRect
+    public var imageAspectRatio : CGFloat
 
-    var placeholderImage : UIImage?
+    public var placeholderImage : UIImage?
     public var delegate : CBPhotoPickerViewControllerDelegate?
-    var style : CBPhotoPickerStyle
+    public var style : CBPhotoPickerStyle
     /**
      init
      Init -- this is how to create a photo picker!

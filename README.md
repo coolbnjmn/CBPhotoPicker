@@ -66,6 +66,9 @@ Change this around to make it look however you want it to look!
 ### v0.1.9
 Fixed the constraints breaking in the background, no more annoying spam log messages!
 
+### v0.1.10
+Made some variables public to be visible to use the photo picker in storyboards. 
+
 ## In the Pipeline
 - more customization of the appearance
 - the big one: better integration into projects, by making this view controller accessible to storyboards, subclassing, etc. That is in the works, and hopefully will come out soon!
