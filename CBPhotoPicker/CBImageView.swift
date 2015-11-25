@@ -43,15 +43,19 @@ public class CBImageView: UIView {
         }
         
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: "handlePinch:")
+        pinchGestureRecognizer.delegate = self
         self.addGestureRecognizer(pinchGestureRecognizer)
         
         let rotationGestureRecognizer = UIRotationGestureRecognizer(target: self, action: "handleRotate:")
+        rotationGestureRecognizer.delegate = self
         self.addGestureRecognizer(rotationGestureRecognizer)
         
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
+        panGestureRecognizer.delegate = self
         self.addGestureRecognizer(panGestureRecognizer)
         
         let touchGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleTap:")
+        touchGestureRecognizer.delegate = self
         touchGestureRecognizer.minimumPressDuration = 0.3
         self.addGestureRecognizer(touchGestureRecognizer)
     }
@@ -124,7 +128,7 @@ public class CBImageView: UIView {
             recognizer.setTranslation(CGPointZero, inView: imageView)
         } else if let view = recognizer.view as? CBImageView where state == .Ended {
             view.overlayView?.alpha = 0
-            
+
             if let imageView = imageView {
                 if shouldSnap(imageView.frame, superFrame: frame) {
                     let pushBehavior : UIPushBehavior = UIPushBehavior(items: [imageView], mode: UIPushBehaviorMode.Continuous)
@@ -161,5 +165,17 @@ public class CBImageView: UIView {
         }
         return false
     }
+}
+
+extension CBImageView : UIGestureRecognizerDelegate {
+    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        if let _ = gestureRecognizer as? UIRotationGestureRecognizer, let _ = otherGestureRecognizer as?UIPinchGestureRecognizer {
+            return true
+        } else if let _ = otherGestureRecognizer as? UIRotationGestureRecognizer, let _ = gestureRecognizer as?UIPinchGestureRecognizer {
+            return true
+        }
+        return false
+    }
+
 }
 
