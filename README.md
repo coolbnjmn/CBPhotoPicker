@@ -1,6 +1,7 @@
 # CBPhotoPicker
 A customizable photo picker view controller for iOS -- Swift
 
+![alt tag](https://github.com/coolbnjmn/CBPhotoPicker/blob/master/CBPhotoPickerDemo.gif)
 
 ## Setup
 ### Initial Setup Instructions
@@ -75,6 +76,11 @@ Made a lot of changes:
 - no more rotation of images, I will bring back quarter turns as a future feature
 - had to bring the overlay view up a level from the image view, so that it can be seen over it.
 - fixed all snapping and zooming snap 
+
+### v0.1.12
+- Fixed the weird snapping behavior when tapping on a new photo after having zoomed on the first photo
+- Added support for hiding the grid overlay -- this is done through an optional parameter in the custom style
+- More bug fixes
 
 ## In the Pipeline
 - add rotation back in
