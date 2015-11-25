@@ -35,6 +35,7 @@ public protocol CBPhotoPickerViewControllerDelegate {
 public class CBPhotoPickerStyle {
     public var selectionColor : UIColor
     public var tintColor : UIColor
+    public var gridOverlayOn : Bool
     
     /**
      * Basic initializer for a toast view style
@@ -42,9 +43,10 @@ public class CBPhotoPickerStyle {
      *  ::param:: selectionColor    A UIColor to be used for the selection of items
      *  ::param:: tintColor          A UIColor that will style the view, such as navigation title font color
      */
-    public required init(selectionColor: UIColor, tintColor: UIColor) {
+    public required init(selectionColor: UIColor, tintColor: UIColor, gridOverlayOn: Bool) {
         self.selectionColor = selectionColor
         self.tintColor = tintColor
+        self.gridOverlayOn = gridOverlayOn
     }
     
     /**
@@ -55,17 +57,18 @@ public class CBPhotoPickerStyle {
      * returns -- a TutorialToastViewStyle with the default values of Light and Dark toasts.
      */
     public class func defaultStyle() -> CBPhotoPickerStyle? {
-        return CBPhotoPickerStyle(selectionColor: UIColor.blueColor(), tintColor: UIColor.whiteColor())
+        return CBPhotoPickerStyle(selectionColor: UIColor.blueColor(), tintColor: UIColor.whiteColor(), gridOverlayOn: true)
     }
     
     /**
      *  A class method to retrieve a custom style object
      *  ::param:: backgroundColor    A UIColor to be used for the background of the toast view
      *  ::param:: tintColor          A UIColor that will style the toast view, such as coloring text and the close button
+     *  ::param:: gridOverlayOn      A bool that controls whether the grid lines will show up in the preview view
      * returns -- a TutorialToastViewStyle with the specified parameters.
      */
-    public class func customStyle(selectionColor : UIColor, tintColor : UIColor) -> CBPhotoPickerStyle? {
-        return CBPhotoPickerStyle(selectionColor: selectionColor, tintColor: tintColor)
+    public class func customStyle(selectionColor : UIColor, tintColor : UIColor, gridOverlayOn: Bool = true) -> CBPhotoPickerStyle? {
+        return CBPhotoPickerStyle(selectionColor: selectionColor, tintColor: tintColor, gridOverlayOn: gridOverlayOn)
     }
 }
 
@@ -120,6 +123,7 @@ public class CBPhotoPickerViewController: UIViewController {
         previewImageView?.userInteractionEnabled = true
         previewImageView?.imageView?.contentMode = .ScaleAspectFill
         previewImageView?.backgroundColor = UIColor.clearColor()
+        previewImageView?.shouldShowOverlay = style.gridOverlayOn
         photoCollectionViewFlowLayout = UICollectionViewFlowLayout()
         photoCollectionViewFlowLayout?.itemSize = CGSizeMake(originalFrame.width/3, originalFrame.width/3)
         photoCollectionViewFlowLayout?.minimumInteritemSpacing = 0

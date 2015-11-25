@@ -11,7 +11,8 @@ import UIKit
 public class CBContainerView: UIView {
     public var overlayView : CBOverlayView?
     public var imageView : CBImageView?
- 
+    public var shouldShowOverlay : Bool?
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -40,10 +41,14 @@ public class CBContainerView: UIView {
 
 extension CBContainerView : CBOverlayViewDelegate {
     public func showOverlay() {
-        overlayView?.alpha = 1
+        if let shouldShowOverlay = shouldShowOverlay where shouldShowOverlay {
+            overlayView?.alpha = 1
+        }
     }
 
     public func hideOverlay() {
-        overlayView?.alpha = 0
+        if let shouldShowOverlay = shouldShowOverlay where shouldShowOverlay {
+            overlayView?.alpha = 0
+        }
     }
 }
