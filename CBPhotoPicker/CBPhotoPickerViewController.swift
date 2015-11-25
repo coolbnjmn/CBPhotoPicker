@@ -186,6 +186,7 @@ public class CBPhotoPickerViewController: UIViewController {
     
     public func handleDone() -> UIImage? {
         if let image = self.previewImageView?.imageView?.capture() {
+            self.previewImageView?.imageView = nil
             return image
         }
         return nil
@@ -234,9 +235,7 @@ extension CBPhotoPickerViewController : UICollectionViewDataSource, UICollection
             CBPhotoLibraryManager.sharedInstance.thumbnailAtIndex(indexPath.item, size: CGSizeMake(view.bounds.width, view.bounds.width), completion: {
                 (asset: PHAsset, image: UIImage?) in
                 if let image = image {
-                    self.previewImageView?.imageView?.imageView?.transform = CGAffineTransformIdentity
-                    self.previewImageView?.imageView?.imageView?.image = image
-                    self.previewImageView?.imageView?.setupScrollView()
+                    self.previewImageView?.imageView?.loadNewImage(image)
                 }
                 
                 if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
@@ -275,5 +274,11 @@ extension CBPhotoPickerViewController : PHPhotoLibraryChangeObserver {
                 })
             }
         }
+}
+
+extension CBPhotoPickerViewController {
+    public override func shouldAutorotate() -> Bool {
+        return false
+    }
 }
 

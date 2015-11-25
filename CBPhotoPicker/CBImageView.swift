@@ -47,6 +47,16 @@ public class CBImageView: UIScrollView {
         }
     }
     
+    func loadNewImage(image: UIImage) {
+        // reset everything
+        zoomScale = minimumZoomScale
+        if let superviewFrame = superview?.frame {
+            contentSize = superviewFrame.size
+        }
+        self.imageView?.image = image
+        setupScrollView()
+    }
+    
     func setupScrollView() {
         if var frame = self.imageView?.frame, let imageSize = imageView?.image?.size {
             if imageSize.height > imageSize.width {
@@ -56,18 +66,17 @@ public class CBImageView: UIScrollView {
                 frame.size.height = self.bounds.size.height
                 frame.size.width = (self.bounds.size.height / imageSize.height) * imageSize.width
             }
-            
             self.imageView?.frame = frame
         }
         
         if let imageSize = imageView?.image?.size {
             self.contentSize = imageSize
             
-            if imageSize.width  > imageSize.height {
-                self.contentOffset = CGPointMake(imageSize.width/4, 0)
-            } else {
-                self.contentOffset = CGPointMake(0, imageSize.height/4)
-            }
+//            if imageSize.width  > imageSize.height {
+//                self.contentOffset = CGPointMake(imageSize.width/4, 0)
+//            } else {
+//                self.contentOffset = CGPointMake(0, imageSize.height/4)
+//            }
             self.zoomScale = self.minimumZoomScale
             
         }
