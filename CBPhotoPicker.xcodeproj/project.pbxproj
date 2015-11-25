@@ -22,6 +22,7 @@
 		B2B859401BF80B8C000F7308 /* CBPhotoPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = B2B8593F1BF80B8C000F7308 /* CBPhotoPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B2B859471BF80B8C000F7308 /* CBPhotoPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B8593C1BF80B8C000F7308 /* CBPhotoPicker.framework */; };
 		B2B8594C1BF80B8C000F7308 /* CBPhotoPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B8594B1BF80B8C000F7308 /* CBPhotoPickerTests.swift */; };
+		B2B9DCC11C05951300D34AB0 /* CBContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B9DCC01C05951300D34AB0 /* CBContainerView.swift */; };
 		B2E89A811BF8116100DCC44B /* CBPhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B288A2851BF80DA200646E58 /* CBPhotoPickerViewController.swift */; };
 		B2E89A821BF811B300DCC44B /* CBPhotoLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B288A2871BF80E0A00646E58 /* CBPhotoLibraryManager.swift */; };
 		B2E89A831BF811E300DCC44B /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B288A2891BF80E6F00646E58 /* UIView+.swift */; };
@@ -31,6 +32,7 @@
 		B2E89A881BF97E7100DCC44B /* CBOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E89A861BF97B1D00DCC44B /* CBOverlayView.swift */; };
 		B2E89A8A1BF982E700DCC44B /* CBImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E89A891BF982E700DCC44B /* CBImageView.swift */; };
 		B2E89A8B1BF983AB00DCC44B /* CBImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E89A891BF982E700DCC44B /* CBImageView.swift */; };
+		B2EAC09A1C05968C003B7753 /* CBContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B9DCC01C05951300D34AB0 /* CBContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,7 @@
 		B2B859461BF80B8C000F7308 /* CBPhotoPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CBPhotoPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B8594B1BF80B8C000F7308 /* CBPhotoPickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBPhotoPickerTests.swift; sourceTree = "<group>"; };
 		B2B8594D1BF80B8C000F7308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2B9DCC01C05951300D34AB0 /* CBContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBContainerView.swift; sourceTree = "<group>"; };
 		B2E89A861BF97B1D00DCC44B /* CBOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBOverlayView.swift; sourceTree = "<group>"; };
 		B2E89A891BF982E700DCC44B /* CBImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +196,7 @@
 				B288A28C1BF80EBE00646E58 /* CBPhotoPickerCell.xib */,
 				B2E89A861BF97B1D00DCC44B /* CBOverlayView.swift */,
 				B2E89A891BF982E700DCC44B /* CBImageView.swift */,
+				B2B9DCC01C05951300D34AB0 /* CBContainerView.swift */,
 			);
 			path = CBPhotoPicker;
 			sourceTree = "<group>";
@@ -409,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2E89A881BF97E7100DCC44B /* CBOverlayView.swift in Sources */,
+				B2EAC09A1C05968C003B7753 /* CBContainerView.swift in Sources */,
 				B2E89A811BF8116100DCC44B /* CBPhotoPickerViewController.swift in Sources */,
 				B2E89A821BF811B300DCC44B /* CBPhotoLibraryManager.swift in Sources */,
 				B288A25C1BF80CBB00646E58 /* ViewController.swift in Sources */,
@@ -441,6 +446,7 @@
 			files = (
 				B288A28A1BF80E6F00646E58 /* UIView+.swift in Sources */,
 				B2E89A8A1BF982E700DCC44B /* CBImageView.swift in Sources */,
+				B2B9DCC11C05951300D34AB0 /* CBContainerView.swift in Sources */,
 				B288A2861BF80DA200646E58 /* CBPhotoPickerViewController.swift in Sources */,
 				B2E89A871BF97B1D00DCC44B /* CBOverlayView.swift in Sources */,
 				B288A2881BF80E0A00646E58 /* CBPhotoLibraryManager.swift in Sources */,

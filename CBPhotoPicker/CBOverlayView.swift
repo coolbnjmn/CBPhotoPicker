@@ -56,3 +56,8 @@ public class CBOverlayView: UIView {
         }
     }
 }
+
+public protocol CBOverlayViewDelegate {
+    func showOverlay()
+    func hideOverlay()
+}

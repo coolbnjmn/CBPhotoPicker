@@ -73,7 +73,7 @@ public class CBPhotoPickerViewController: UIViewController {
     
     static let kReuseIdentifier = "cbPhotoPickerCell"
     
-    var previewImageView: CBImageView?
+    var previewImageView: CBContainerView?
     var photoCollectionView: UICollectionView?
     var previewPhotoFrame : CGRect = CGRectZero
     
@@ -116,7 +116,7 @@ public class CBPhotoPickerViewController: UIViewController {
     public override func loadView() {
         view = UIView(frame: originalFrame)
         let previewImageHeight : CGFloat = originalFrame.width/imageAspectRatio
-        previewImageView = CBImageView(frame: CGRectMake(0, 0, originalFrame.width, previewImageHeight))
+        previewImageView = CBContainerView(frame: CGRectMake(0, 0, originalFrame.width, previewImageHeight))
         previewImageView?.userInteractionEnabled = true
         previewImageView?.imageView?.contentMode = .ScaleAspectFill
         previewImageView?.backgroundColor = UIColor.clearColor()
@@ -168,7 +168,7 @@ public class CBPhotoPickerViewController: UIViewController {
         photoCollectionView?.registerNib(UINib(nibName: "CBPhotoPickerCell", bundle: NSBundle(forClass: self.classForCoder)), forCellWithReuseIdentifier: "cbPhotoPickerCell")
         
         if let placeholderImage = placeholderImage {
-            previewImageView?.imageView?.image = placeholderImage
+            previewImageView?.imageView?.imageView?.image = placeholderImage
         }
         
         if let navigationController = navigationController {
@@ -185,7 +185,7 @@ public class CBPhotoPickerViewController: UIViewController {
     }
     
     public func handleDone() -> UIImage? {
-        if let image = self.previewImageView?.capture() {
+        if let image = self.previewImageView?.imageView?.capture() {
             return image
         }
         return nil
@@ -234,8 +234,9 @@ extension CBPhotoPickerViewController : UICollectionViewDataSource, UICollection
             CBPhotoLibraryManager.sharedInstance.thumbnailAtIndex(indexPath.item, size: CGSizeMake(view.bounds.width, view.bounds.width), completion: {
                 (asset: PHAsset, image: UIImage?) in
                 if let image = image {
-                    self.previewImageView?.imageView?.transform = CGAffineTransformIdentity
-                    self.previewImageView?.imageView?.image = image
+                    self.previewImageView?.imageView?.imageView?.transform = CGAffineTransformIdentity
+                    self.previewImageView?.imageView?.imageView?.image = image
+                    self.previewImageView?.imageView?.setupScrollView()
                 }
                 
                 if let cell = collectionView.cellForItemAtIndexPath(indexPath) {

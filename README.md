@@ -69,7 +69,15 @@ Fixed the constraints breaking in the background, no more annoying spam log mess
 ### v0.1.10
 Made some variables public to be visible to use the photo picker in storyboards. 
 
-## In the Pipeline
-- more customization of the appearance
-- the big one: better integration into projects, by making this view controller accessible to storyboards, subclassing, etc. That is in the works, and hopefully will come out soon!
+### v0.1.11
+Made a lot of changes:
+- completely revamped how I use touch gestures, made it a scroll view instead of my gesture recognizers...this simplifies the logic greatly
+- no more rotation of images, I will bring back quarter turns as a future feature
+- had to bring the overlay view up a level from the image view, so that it can be seen over it.
+- fixed all snapping and zooming snap 
 
+## In the Pipeline
+- add rotation back in
+- add more customization
+- better grid layout helper
+- snap up and down the image preview part with the bottom collection view so that it can take full screen

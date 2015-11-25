@@ -14,11 +14,11 @@ extension CGRect {
     }
 }
 
-public class CBImageView: UIView {
+public class CBImageView: UIScrollView {
     var imageView: UIImageView?
-    var overlayView : CBOverlayView?
     var animator : UIDynamicAnimator?
-    var scale : CGFloat = 1
+    
+    public var overlayDelegate : CBOverlayViewDelegate?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,154 +28,88 @@ public class CBImageView: UIView {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     func setup() {
+        self.clipsToBounds = false
+        self.showsVerticalScrollIndicator = false
+        self.showsHorizontalScrollIndicator = false
+        self.alwaysBounceHorizontal = true
+        self.alwaysBounceVertical = true
+        self.bouncesZoom = true
+        self.maximumZoomScale = 10
+        self.decelerationRate = UIScrollViewDecelerationRateFast;
+        self.delegate = self
         imageView = UIImageView(frame: self.frame)
-        overlayView = CBOverlayView(frame: self.frame)
+        
         if let imageView = imageView {
             imageView.userInteractionEnabled = true
             self.addSubview(imageView)
         }
-        if let overlayView = overlayView {
-            overlayView.userInteractionEnabled = false
-            overlayView.alpha = 0
-            self.addSubview(overlayView) 
+    }
+    
+    func setupScrollView() {
+        if var frame = self.imageView?.frame, let imageSize = imageView?.image?.size {
+            if imageSize.height > imageSize.width {
+                frame.size.width = self.bounds.size.width
+                frame.size.height = (self.bounds.size.width / imageSize.width) * imageSize.height
+            } else {
+                frame.size.height = self.bounds.size.height
+                frame.size.width = (self.bounds.size.height / imageSize.height) * imageSize.width
+            }
+            
+            self.imageView?.frame = frame
         }
         
-        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: "handlePinch:")
-        pinchGestureRecognizer.delegate = self
-        self.addGestureRecognizer(pinchGestureRecognizer)
-        
-        let rotationGestureRecognizer = UIRotationGestureRecognizer(target: self, action: "handleRotate:")
-        rotationGestureRecognizer.delegate = self
-        self.addGestureRecognizer(rotationGestureRecognizer)
-        
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
-        panGestureRecognizer.delegate = self
-        self.addGestureRecognizer(panGestureRecognizer)
-        
-        let touchGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleTap:")
-        touchGestureRecognizer.delegate = self
-        touchGestureRecognizer.minimumPressDuration = 0.3
-        self.addGestureRecognizer(touchGestureRecognizer)
+        if let imageSize = imageView?.image?.size {
+            self.contentSize = imageSize
+            
+            if imageSize.width  > imageSize.height {
+                self.contentOffset = CGPointMake(imageSize.width/4, 0)
+            } else {
+                self.contentOffset = CGPointMake(0, imageSize.height/4)
+            }
+            self.zoomScale = self.minimumZoomScale
+            
+        }
+    }
+    
+    class func cbScaleRect(rect : CGRect, scale: CGFloat) -> CGRect {
+        return CGRectMake(rect.origin.x * scale, rect.origin.y * scale, rect.size.width * scale, rect.size.height * scale)
+    }
+    
+    func calculateRectForCropArea() -> CGRect? {
+        if let imageView = imageView, let image = imageView.image {
+            var sizeScale : CGFloat = image.size.width / imageView.frame.size.width
+            sizeScale *= self.zoomScale
+            let visibleRect = self.convertRect(self.bounds, toView: self.imageView)
+            return CBImageView.cbScaleRect(visibleRect, scale: sizeScale)
+        }
+        return nil
     }
     
     public func capture() -> UIImage? {
-        return self.snapshot
-    }
-    
-    func handlePinch(recognizer: UIPinchGestureRecognizer) {
-        let state : UIGestureRecognizerState = recognizer.state
-        
-        if state == .Began || state == .Changed {
-            let scale = recognizer.scale
-            self.scale *= scale
-            if let view = recognizer.view as? CBImageView,
-                let imageView = view.imageView {
-                    view.overlayView?.alpha = 1
-                    imageView.transform = CGAffineTransformScale(imageView.transform, scale, scale)
-            }
-            recognizer.scale = 1.0
-        } else if state == .Ended {
-            if let view = recognizer.view as? CBImageView {
-                view.overlayView?.alpha = 0
-            }
-            if let imageView = imageView {
-                if shouldSnap(imageView.frame, superFrame: frame) {
-                    let pushBehavior : UIPushBehavior = UIPushBehavior(items: [imageView], mode: UIPushBehaviorMode.Continuous)
-                    pushBehavior.setTargetOffsetFromCenter(UIOffset(horizontal: 0, vertical: 0), forItem: imageView)
-                    if let animator = self.animator {
-                        animator.removeAllBehaviors()
-                        animator.addBehavior(pushBehavior)
-                    } else {
-                        if let superview = self.superview {
-                            self.animator = UIDynamicAnimator(referenceView: superview)
-                            self.animator?.addBehavior(pushBehavior)
-                        }
-                    }
-                    imageView.transform = CGAffineTransformScale(imageView.transform, scale, scale)
-                }
+        let visibleRect = self.calculateRectForCropArea()
+        if let visibleRect = visibleRect, let image = self.imageView?.image {
+            if let ref : CGImageRef = CGImageCreateWithImageInRect(self.imageView?.image?.CGImage, visibleRect) {
+                let cropped : UIImage = UIImage(CGImage: ref, scale: image.scale, orientation: image.imageOrientation)
+                return cropped
             }
         }
-    }
-    
-    func handleRotate(recognizer: UIRotationGestureRecognizer) {
-        let state : UIGestureRecognizerState = recognizer.state
-        
-        if state == .Began || state == .Changed {
-            let rotation = recognizer.rotation
-            if let view = recognizer.view as? CBImageView,
-                let imageView = view.imageView {
-                    view.overlayView?.alpha = 1
-                    imageView.transform = CGAffineTransformRotate(imageView.transform, rotation)
-            }
-            recognizer.rotation = 0
-        } else if state == .Ended {
-            if let view = recognizer.view as? CBImageView {
-                view.overlayView?.alpha = 0
-            }
-        }
-    }
-    
-    
-    func handlePan(recognizer: UIPanGestureRecognizer) {
-        let state : UIGestureRecognizerState = recognizer.state
-        
-        if let view = recognizer.view as? CBImageView, let imageView = view.imageView where state == .Began || state == .Changed {
-            let translation = recognizer.translationInView(view)
-            imageView.transform = CGAffineTransformTranslate(CGAffineTransformScale(imageView.transform, 1, 1), translation.x, translation.y)
-            view.overlayView?.alpha = 1
-            recognizer.setTranslation(CGPointZero, inView: imageView)
-        } else if let view = recognizer.view as? CBImageView where state == .Ended {
-            view.overlayView?.alpha = 0
-
-            if let imageView = imageView {
-                if shouldSnap(imageView.frame, superFrame: frame) {
-                    let pushBehavior : UIPushBehavior = UIPushBehavior(items: [imageView], mode: UIPushBehaviorMode.Continuous)
-                    pushBehavior.setTargetOffsetFromCenter(UIOffset(horizontal: 0, vertical: 0), forItem: imageView)
-                    if let animator = self.animator {
-                        animator.removeAllBehaviors()
-                        animator.addBehavior(pushBehavior)
-                    } else {
-                        if let superview = self.superview {
-                            self.animator = UIDynamicAnimator(referenceView: superview)
-                            self.animator?.addBehavior(pushBehavior)
-                        }
-                    }
-                    imageView.transform = CGAffineTransformScale(imageView.transform, scale, scale)
-                }
-            }
-
-        }
-    }
-    
-    func handleTap(recognizer: UILongPressGestureRecognizer) {
-        let state : UIGestureRecognizerState = recognizer.state
-        
-        if let view = recognizer.view as? CBImageView where state == .Began || state == .Changed {
-            view.overlayView?.alpha = 1
-        } else if let view = recognizer.view as? CBImageView {
-            view.overlayView?.alpha = 0
-        }
-    }
-    
-    func shouldSnap(frame : CGRect, superFrame : CGRect) -> Bool {
-        if frame.origin.x > superFrame.origin.x || frame.origin.y > superFrame.origin.y || frame.origin.x+frame.size.width < superFrame.origin.x + superFrame.size.width || frame.origin.y + frame.size.height < superFrame.origin.y + superFrame.size.height {
-            return true
-        }
-        return false
+        return nil
     }
 }
 
-extension CBImageView : UIGestureRecognizerDelegate {
-    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        if let _ = gestureRecognizer as? UIRotationGestureRecognizer, let _ = otherGestureRecognizer as?UIPinchGestureRecognizer {
-            return true
-        } else if let _ = otherGestureRecognizer as? UIRotationGestureRecognizer, let _ = gestureRecognizer as?UIPinchGestureRecognizer {
-            return true
-        }
-        return false
+extension CBImageView : UIScrollViewDelegate {
+    public func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return self.imageView
     }
-
+    
+    public func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        overlayDelegate?.hideOverlay()
+    }
+    
+    public func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        overlayDelegate?.showOverlay()
+    }
 }
 
