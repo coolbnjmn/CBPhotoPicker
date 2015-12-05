@@ -22,7 +22,7 @@ class ViewController: UIViewController, CBPhotoPickerViewControllerDelegate {
     func handleTap(recognizer: UITapGestureRecognizer) {
         let style = CBPhotoPickerStyle.customStyle(UIColor.blueColor(), tintColor: UIColor.whiteColor())
         if let style = style {
-            let photoPicker = CBPhotoPickerViewController(frame: view.frame, aspectRatio: 1, placeholder: nil, cbPhotoPickerStyle: style)
+            let photoPicker = CBPhotoPickerViewController(frame: view.frame, aspectRatio: 2, placeholder: nil, cbPhotoPickerStyle: style)
             photoPicker.delegate = self
             self.presentViewController(photoPicker, animated: true, completion: {
             })

@@ -82,6 +82,11 @@ Made a lot of changes:
 - Added support for hiding the grid overlay -- this is done through an optional parameter in the custom style
 - More bug fixes
 
+### v0.1.13
+- Fixed image centering and showing black areas -- that never happens now!
+- Re-fixed the cropping at the end, since I had switched to using a scroll view I had broken it. 
+- More bug fixes
+
 ## In the Pipeline
 - add rotation back in
 - add more customization

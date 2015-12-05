@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 extension CGRect {
     func scale(scale: CGFloat) -> CGRect {
         return CGRectMake(origin.x * scale, origin.y * scale, size.width * scale, size.height * scale)
@@ -29,6 +30,11 @@ public class CBImageView: UIScrollView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        self.imageView?.image = nil
+        self.imageView = nil
+    }
+    
     func setup() {
         self.clipsToBounds = false
         self.showsVerticalScrollIndicator = false
@@ -43,6 +49,7 @@ public class CBImageView: UIScrollView {
         
         if let imageView = imageView {
             imageView.userInteractionEnabled = true
+            imageView.contentMode = .ScaleAspectFit
             self.addSubview(imageView)
         }
     }
@@ -58,53 +65,48 @@ public class CBImageView: UIScrollView {
     }
     
     func setupScrollView() {
-        if var frame = self.imageView?.frame, let imageSize = imageView?.image?.size {
-            if imageSize.height > imageSize.width {
-                frame.size.width = self.bounds.size.width
-                frame.size.height = (self.bounds.size.width / imageSize.width) * imageSize.height
-            } else {
-                frame.size.height = self.bounds.size.height
-                frame.size.width = (self.bounds.size.height / imageSize.height) * imageSize.width
-            }
-            self.imageView?.frame = frame
+        print(frame)
+        print(self.imageView?.frame)
+        print(self.imageView?.image?.size)
+        print(imageView?.image?.size)
+        print("+++++++")
+        
+        if let imageSize = imageView?.image?.size where imageSize.width > imageView?.frame.size.width || imageSize.height > imageView?.frame.size.height {
+            self.contentSize = imageSize
+            self.zoomScale = self.minimumZoomScale
         }
         
-        if let imageSize = imageView?.image?.size {
-            self.contentSize = imageSize
+        print(self.contentSize)
+        print(self.contentOffset)
+        
+        if let image = imageView?.image {
+            let widthScaleFactor = self.bounds.width / image.size.width
+            let heightScaleFactor = self.bounds.height / image.size.height
             
-//            if imageSize.width  > imageSize.height {
-//                self.contentOffset = CGPointMake(imageSize.width/4, 0)
-//            } else {
-//                self.contentOffset = CGPointMake(0, imageSize.height/4)
-//            }
-            self.zoomScale = self.minimumZoomScale
+            var imageViewXOrigin: CGFloat = 0
+            let imageViewYOrigin: CGFloat = 0
+            var imageViewHeight : CGFloat
+            var imageViewWidth : CGFloat
             
-        }
-    }
-    
-    class func cbScaleRect(rect : CGRect, scale: CGFloat) -> CGRect {
-        return CGRectMake(rect.origin.x * scale, rect.origin.y * scale, rect.size.width * scale, rect.size.height * scale)
-    }
-    
-    func calculateRectForCropArea() -> CGRect? {
-        if let imageView = imageView, let image = imageView.image {
-            var sizeScale : CGFloat = image.size.width / imageView.frame.size.width
-            sizeScale *= self.zoomScale
-            let visibleRect = self.convertRect(self.bounds, toView: self.imageView)
-            return CBImageView.cbScaleRect(visibleRect, scale: sizeScale)
-        }
-        return nil
-    }
-    
-    public func capture() -> UIImage? {
-        let visibleRect = self.calculateRectForCropArea()
-        if let visibleRect = visibleRect, let image = self.imageView?.image {
-            if let ref : CGImageRef = CGImageCreateWithImageInRect(self.imageView?.image?.CGImage, visibleRect) {
-                let cropped : UIImage = UIImage(CGImage: ref, scale: image.scale, orientation: image.imageOrientation)
-                return cropped
+            if widthScaleFactor > heightScaleFactor {
+                imageViewWidth = image.size.width * widthScaleFactor
+                imageViewHeight = image.size.height * widthScaleFactor
+            } else {
+                imageViewWidth = image.size.width * heightScaleFactor
+                imageViewHeight = image.size.height * heightScaleFactor
+                imageViewXOrigin = -1 * (imageViewWidth - self.bounds.width) / CGFloat(2)
             }
+            
+            self.imageView?.frame = CGRectMake(imageViewXOrigin,
+                imageViewYOrigin,
+                imageViewWidth,
+                imageViewHeight);
         }
-        return nil
+    }
+
+
+    public func capture() -> UIImage? {
+        return superview?.snapshot
     }
 }
 
