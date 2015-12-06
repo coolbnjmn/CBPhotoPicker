@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController, CBPhotoPickerViewControllerDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
+    var photoPicker: CBPhotoPickerViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imageView.userInteractionEnabled = true
@@ -22,11 +24,21 @@ class ViewController: UIViewController, CBPhotoPickerViewControllerDelegate {
     func handleTap(recognizer: UITapGestureRecognizer) {
         let style = CBPhotoPickerStyle.customStyle(UIColor.blueColor(), tintColor: UIColor.whiteColor())
         if let style = style {
-            let photoPicker = CBPhotoPickerViewController(frame: view.frame, aspectRatio: 2, placeholder: nil, cbPhotoPickerStyle: style)
-            photoPicker.delegate = self
-            self.presentViewController(photoPicker, animated: true, completion: {
-            })
+            photoPicker = CBPhotoPickerViewController(frame: view.frame, aspectRatio: 2, placeholder: nil, cbPhotoPickerStyle: style)
+            if let photoPicker = photoPicker {
+                photoPicker.delegate = self
+                let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleExit:")
+                tapGestureRecognizer.numberOfTapsRequired = 3
+                self.presentViewController(photoPicker, animated: true, completion: {
+                    photoPicker.previewImageView?.addGestureRecognizer(tapGestureRecognizer)
+                })
+            }
+           
         }
+    }
+    
+    func handleExit(recognizer: UIGestureRecognizer) {
+        handleSuccess(photoPicker?.handleDone())
     }
     
     func handleSuccess(resultImage: UIImage?) {

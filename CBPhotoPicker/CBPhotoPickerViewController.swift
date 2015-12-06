@@ -162,10 +162,6 @@ public class CBPhotoPickerViewController: UIViewController {
             photoCollectionView.dataSource = self
         }
         
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleExit:")
-        tapGestureRecognizer.numberOfTapsRequired = 3
-        previewImageView?.addGestureRecognizer(tapGestureRecognizer)
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
         
         photoCollectionView?.registerNib(UINib(nibName: "CBPhotoPickerCell", bundle: NSBundle(forClass: self.classForCoder)), forCellWithReuseIdentifier: "cbPhotoPickerCell")

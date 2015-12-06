@@ -87,6 +87,9 @@ Made a lot of changes:
 - Re-fixed the cropping at the end, since I had switched to using a scroll view I had broken it. 
 - More bug fixes
 
+### v0.1.14
+- Fixed tiny bug, should resolve a possible crash in a user's code.
+
 ## In the Pipeline
 - add rotation back in
 - add more customization
