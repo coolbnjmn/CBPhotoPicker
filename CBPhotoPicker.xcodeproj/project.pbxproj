@@ -19,14 +19,6 @@
 		B288A28A1BF80E6F00646E58 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B288A2891BF80E6F00646E58 /* UIView+.swift */; };
 		B288A28D1BF80EBE00646E58 /* CBPhotoPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B288A28B1BF80EBE00646E58 /* CBPhotoPickerCell.swift */; };
 		B288A28E1BF80EBE00646E58 /* CBPhotoPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B288A28C1BF80EBE00646E58 /* CBPhotoPickerCell.xib */; };
-		B2AAE4511C195F8100C8D200 /* DZNEmptyDataSet.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AAE4501C195F8100C8D200 /* DZNEmptyDataSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2AAE4581C195F8100C8D200 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2AAE44E1C195F8100C8D200 /* DZNEmptyDataSet.framework */; };
-		B2AAE45F1C195F8100C8D200 /* DZNEmptyDataSetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AAE45E1C195F8100C8D200 /* DZNEmptyDataSetTests.m */; };
-		B2AAE4631C195F8100C8D200 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2AAE44E1C195F8100C8D200 /* DZNEmptyDataSet.framework */; };
-		B2AAE4641C195F8100C8D200 /* DZNEmptyDataSet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2AAE44E1C195F8100C8D200 /* DZNEmptyDataSet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B2AAE46E1C195FD100C8D200 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AAE46D1C195FD100C8D200 /* UIScrollView+EmptyDataSet.m */; };
-		B2AAE4701C19601000C8D200 /* UIScrollView+EmptyDataSet.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AAE46C1C195FB500C8D200 /* UIScrollView+EmptyDataSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2AAE4731C19604F00C8D200 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2AAE44E1C195F8100C8D200 /* DZNEmptyDataSet.framework */; };
 		B2B859401BF80B8C000F7308 /* CBPhotoPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = B2B8593F1BF80B8C000F7308 /* CBPhotoPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B2B859471BF80B8C000F7308 /* CBPhotoPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B8593C1BF80B8C000F7308 /* CBPhotoPicker.framework */; };
 		B2B8594C1BF80B8C000F7308 /* CBPhotoPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B8594B1BF80B8C000F7308 /* CBPhotoPickerTests.swift */; };
@@ -41,6 +33,7 @@
 		B2E89A8A1BF982E700DCC44B /* CBImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E89A891BF982E700DCC44B /* CBImageView.swift */; };
 		B2E89A8B1BF983AB00DCC44B /* CBImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E89A891BF982E700DCC44B /* CBImageView.swift */; };
 		B2EAC09A1C05968C003B7753 /* CBContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B9DCC01C05951300D34AB0 /* CBContainerView.swift */; };
+		ED9D6AB2233E58A943033E2E /* libPods-CBPhotoPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D39377E4AB82CB904CE3A23F /* libPods-CBPhotoPicker.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,34 +51,6 @@
 			remoteGlobalIDString = B288A2561BF80CBB00646E58;
 			remoteInfo = CBPhotoPickerDemo;
 		};
-		B2AAE4591C195F8100C8D200 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B2B859331BF80B8C000F7308 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B2AAE44D1C195F8100C8D200;
-			remoteInfo = DZNEmptyDataSet;
-		};
-		B2AAE45B1C195F8100C8D200 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B2B859331BF80B8C000F7308 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B288A2561BF80CBB00646E58;
-			remoteInfo = CBPhotoPickerDemo;
-		};
-		B2AAE4611C195F8100C8D200 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B2B859331BF80B8C000F7308 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B2AAE44D1C195F8100C8D200;
-			remoteInfo = DZNEmptyDataSet;
-		};
-		B2AAE4711C19604900C8D200 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B2B859331BF80B8C000F7308 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B2AAE44D1C195F8100C8D200;
-			remoteInfo = DZNEmptyDataSet;
-		};
 		B2B859481BF80B8C000F7308 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B2B859331BF80B8C000F7308 /* Project object */;
@@ -102,7 +67,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B2AAE4641C195F8100C8D200 /* DZNEmptyDataSet.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,6 +74,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1D72925ED260CCCD25207F5C /* Pods-CBPhotoPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBPhotoPicker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CBPhotoPicker/Pods-CBPhotoPicker.debug.xcconfig"; sourceTree = "<group>"; };
 		B288A2571BF80CBB00646E58 /* CBPhotoPickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBPhotoPickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B288A2591BF80CBB00646E58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B288A25B1BF80CBB00646E58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -128,14 +93,6 @@
 		B288A2891BF80E6F00646E58 /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		B288A28B1BF80EBE00646E58 /* CBPhotoPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBPhotoPickerCell.swift; sourceTree = "<group>"; };
 		B288A28C1BF80EBE00646E58 /* CBPhotoPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBPhotoPickerCell.xib; sourceTree = "<group>"; };
-		B2AAE44E1C195F8100C8D200 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DZNEmptyDataSet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2AAE4501C195F8100C8D200 /* DZNEmptyDataSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZNEmptyDataSet.h; sourceTree = "<group>"; };
-		B2AAE4521C195F8100C8D200 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B2AAE4571C195F8100C8D200 /* DZNEmptyDataSetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DZNEmptyDataSetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2AAE45E1C195F8100C8D200 /* DZNEmptyDataSetTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZNEmptyDataSetTests.m; sourceTree = "<group>"; };
-		B2AAE4601C195F8100C8D200 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B2AAE46C1C195FB500C8D200 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
-		B2AAE46D1C195FD100C8D200 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		B2B8593C1BF80B8C000F7308 /* CBPhotoPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CBPhotoPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B8593F1BF80B8C000F7308 /* CBPhotoPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBPhotoPicker.h; sourceTree = "<group>"; };
 		B2B859411BF80B8C000F7308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -145,6 +102,8 @@
 		B2B9DCC01C05951300D34AB0 /* CBContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBContainerView.swift; sourceTree = "<group>"; };
 		B2E89A861BF97B1D00DCC44B /* CBOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBOverlayView.swift; sourceTree = "<group>"; };
 		B2E89A891BF982E700DCC44B /* CBImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBImageView.swift; sourceTree = "<group>"; };
+		D39377E4AB82CB904CE3A23F /* libPods-CBPhotoPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CBPhotoPicker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDC3A349D7DAE6AC564CAB79 /* Pods-CBPhotoPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBPhotoPicker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CBPhotoPicker/Pods-CBPhotoPicker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +111,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2AAE4631C195F8100C8D200 /* DZNEmptyDataSet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,26 +128,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2AAE44A1C195F8100C8D200 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2AAE4541C195F8100C8D200 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B2AAE4581C195F8100C8D200 /* DZNEmptyDataSet.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B2B859381BF80B8C000F7308 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2AAE4731C19604F00C8D200 /* DZNEmptyDataSet.framework in Frameworks */,
+				ED9D6AB2233E58A943033E2E /* libPods-CBPhotoPicker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +147,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E5A9E63ABB255E4C55BDDD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D39377E4AB82CB904CE3A23F /* libPods-CBPhotoPicker.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		957D9B158D4EB01BD503F987 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1D72925ED260CCCD25207F5C /* Pods-CBPhotoPicker.debug.xcconfig */,
+				DDC3A349D7DAE6AC564CAB79 /* Pods-CBPhotoPicker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B288A2581BF80CBB00646E58 /* CBPhotoPickerDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,26 +195,6 @@
 			path = CBPhotoPickerDemoUITests;
 			sourceTree = "<group>";
 		};
-		B2AAE44F1C195F8100C8D200 /* DZNEmptyDataSet */ = {
-			isa = PBXGroup;
-			children = (
-				B2AAE4501C195F8100C8D200 /* DZNEmptyDataSet.h */,
-				B2AAE4521C195F8100C8D200 /* Info.plist */,
-				B2AAE46C1C195FB500C8D200 /* UIScrollView+EmptyDataSet.h */,
-				B2AAE46D1C195FD100C8D200 /* UIScrollView+EmptyDataSet.m */,
-			);
-			path = DZNEmptyDataSet;
-			sourceTree = "<group>";
-		};
-		B2AAE45D1C195F8100C8D200 /* DZNEmptyDataSetTests */ = {
-			isa = PBXGroup;
-			children = (
-				B2AAE45E1C195F8100C8D200 /* DZNEmptyDataSetTests.m */,
-				B2AAE4601C195F8100C8D200 /* Info.plist */,
-			);
-			path = DZNEmptyDataSetTests;
-			sourceTree = "<group>";
-		};
 		B2B859321BF80B8C000F7308 = {
 			isa = PBXGroup;
 			children = (
@@ -263,9 +203,9 @@
 				B288A2581BF80CBB00646E58 /* CBPhotoPickerDemo */,
 				B288A26D1BF80CBB00646E58 /* CBPhotoPickerDemoTests */,
 				B288A2781BF80CBB00646E58 /* CBPhotoPickerDemoUITests */,
-				B2AAE44F1C195F8100C8D200 /* DZNEmptyDataSet */,
-				B2AAE45D1C195F8100C8D200 /* DZNEmptyDataSetTests */,
 				B2B8593D1BF80B8C000F7308 /* Products */,
+				957D9B158D4EB01BD503F987 /* Pods */,
+				3E5A9E63ABB255E4C55BDDD4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -277,8 +217,6 @@
 				B288A2571BF80CBB00646E58 /* CBPhotoPickerDemo.app */,
 				B288A26A1BF80CBB00646E58 /* CBPhotoPickerDemoTests.xctest */,
 				B288A2751BF80CBB00646E58 /* CBPhotoPickerDemoUITests.xctest */,
-				B2AAE44E1C195F8100C8D200 /* DZNEmptyDataSet.framework */,
-				B2AAE4571C195F8100C8D200 /* DZNEmptyDataSetTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -312,15 +250,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		B2AAE44B1C195F8100C8D200 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B2AAE4511C195F8100C8D200 /* DZNEmptyDataSet.h in Headers */,
-				B2AAE4701C19601000C8D200 /* UIScrollView+EmptyDataSet.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B2B859391BF80B8C000F7308 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -344,7 +273,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B2AAE4621C195F8100C8D200 /* PBXTargetDependency */,
 			);
 			name = CBPhotoPickerDemo;
 			productName = CBPhotoPickerDemo;
@@ -387,56 +315,20 @@
 			productReference = B288A2751BF80CBB00646E58 /* CBPhotoPickerDemoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		B2AAE44D1C195F8100C8D200 /* DZNEmptyDataSet */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B2AAE4691C195F8100C8D200 /* Build configuration list for PBXNativeTarget "DZNEmptyDataSet" */;
-			buildPhases = (
-				B2AAE4491C195F8100C8D200 /* Sources */,
-				B2AAE44A1C195F8100C8D200 /* Frameworks */,
-				B2AAE44B1C195F8100C8D200 /* Headers */,
-				B2AAE44C1C195F8100C8D200 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DZNEmptyDataSet;
-			productName = DZNEmptyDataSet;
-			productReference = B2AAE44E1C195F8100C8D200 /* DZNEmptyDataSet.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		B2AAE4561C195F8100C8D200 /* DZNEmptyDataSetTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B2AAE46B1C195F8100C8D200 /* Build configuration list for PBXNativeTarget "DZNEmptyDataSetTests" */;
-			buildPhases = (
-				B2AAE4531C195F8100C8D200 /* Sources */,
-				B2AAE4541C195F8100C8D200 /* Frameworks */,
-				B2AAE4551C195F8100C8D200 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B2AAE45A1C195F8100C8D200 /* PBXTargetDependency */,
-				B2AAE45C1C195F8100C8D200 /* PBXTargetDependency */,
-			);
-			name = DZNEmptyDataSetTests;
-			productName = DZNEmptyDataSetTests;
-			productReference = B2AAE4571C195F8100C8D200 /* DZNEmptyDataSetTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		B2B8593B1BF80B8C000F7308 /* CBPhotoPicker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2B859501BF80B8C000F7308 /* Build configuration list for PBXNativeTarget "CBPhotoPicker" */;
 			buildPhases = (
+				2320AEAC92CE2E0EC7B78113 /* Check Pods Manifest.lock */,
 				B2B859371BF80B8C000F7308 /* Sources */,
 				B2B859381BF80B8C000F7308 /* Frameworks */,
 				B2B859391BF80B8C000F7308 /* Headers */,
 				B2B8593A1BF80B8C000F7308 /* Resources */,
+				B7B2191EFE5690BF2EC4E305 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B2AAE4721C19604900C8D200 /* PBXTargetDependency */,
 			);
 			name = CBPhotoPicker;
 			productName = CBPhotoPicker;
@@ -482,13 +374,6 @@
 						CreatedOnToolsVersion = 7.1;
 						TestTargetID = B288A2561BF80CBB00646E58;
 					};
-					B2AAE44D1C195F8100C8D200 = {
-						CreatedOnToolsVersion = 7.1;
-					};
-					B2AAE4561C195F8100C8D200 = {
-						CreatedOnToolsVersion = 7.1;
-						TestTargetID = B288A2561BF80CBB00646E58;
-					};
 					B2B8593B1BF80B8C000F7308 = {
 						CreatedOnToolsVersion = 7.1;
 					};
@@ -515,8 +400,6 @@
 				B288A2561BF80CBB00646E58 /* CBPhotoPickerDemo */,
 				B288A2691BF80CBB00646E58 /* CBPhotoPickerDemoTests */,
 				B288A2741BF80CBB00646E58 /* CBPhotoPickerDemoUITests */,
-				B2AAE44D1C195F8100C8D200 /* DZNEmptyDataSet */,
-				B2AAE4561C195F8100C8D200 /* DZNEmptyDataSetTests */,
 			);
 		};
 /* End PBXProject section */
@@ -547,20 +430,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2AAE44C1C195F8100C8D200 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2AAE4551C195F8100C8D200 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B2B8593A1BF80B8C000F7308 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -577,6 +446,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2320AEAC92CE2E0EC7B78113 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B7B2191EFE5690BF2EC4E305 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CBPhotoPicker/Pods-CBPhotoPicker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B288A2531BF80CBB00646E58 /* Sources */ = {
@@ -608,22 +510,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B288A27A1BF80CBB00646E58 /* CBPhotoPickerDemoUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2AAE4491C195F8100C8D200 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B2AAE46E1C195FD100C8D200 /* UIScrollView+EmptyDataSet.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2AAE4531C195F8100C8D200 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B2AAE45F1C195F8100C8D200 /* DZNEmptyDataSetTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,26 +547,6 @@
 			isa = PBXTargetDependency;
 			target = B288A2561BF80CBB00646E58 /* CBPhotoPickerDemo */;
 			targetProxy = B288A2761BF80CBB00646E58 /* PBXContainerItemProxy */;
-		};
-		B2AAE45A1C195F8100C8D200 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B2AAE44D1C195F8100C8D200 /* DZNEmptyDataSet */;
-			targetProxy = B2AAE4591C195F8100C8D200 /* PBXContainerItemProxy */;
-		};
-		B2AAE45C1C195F8100C8D200 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B288A2561BF80CBB00646E58 /* CBPhotoPickerDemo */;
-			targetProxy = B2AAE45B1C195F8100C8D200 /* PBXContainerItemProxy */;
-		};
-		B2AAE4621C195F8100C8D200 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B2AAE44D1C195F8100C8D200 /* DZNEmptyDataSet */;
-			targetProxy = B2AAE4611C195F8100C8D200 /* PBXContainerItemProxy */;
-		};
-		B2AAE4721C19604900C8D200 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B2AAE44D1C195F8100C8D200 /* DZNEmptyDataSet */;
-			targetProxy = B2AAE4711C19604900C8D200 /* PBXContainerItemProxy */;
 		};
 		B2B859491BF80B8C000F7308 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -781,60 +647,6 @@
 			};
 			name = Release;
 		};
-		B2AAE4651C195F8100C8D200 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DZNEmptyDataSet/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = coolbnjmn.DZNEmptyDataSet;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		B2AAE4661C195F8100C8D200 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DZNEmptyDataSet/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = coolbnjmn.DZNEmptyDataSet;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		B2AAE4671C195F8100C8D200 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = DZNEmptyDataSetTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = coolbnjmn.DZNEmptyDataSetTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CBPhotoPickerDemo.app/CBPhotoPickerDemo";
-			};
-			name = Debug;
-		};
-		B2AAE4681C195F8100C8D200 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = DZNEmptyDataSetTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = coolbnjmn.DZNEmptyDataSetTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CBPhotoPickerDemo.app/CBPhotoPickerDemo";
-			};
-			name = Release;
-		};
 		B2B8594E1BF80B8C000F7308 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -926,7 +738,9 @@
 		};
 		B2B859511BF80B8C000F7308 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D72925ED260CCCD25207F5C /* Pods-CBPhotoPicker.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -944,7 +758,9 @@
 		};
 		B2B859521BF80B8C000F7308 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDC3A349D7DAE6AC564CAB79 /* Pods-CBPhotoPicker.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1008,22 +824,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		B2AAE4691C195F8100C8D200 /* Build configuration list for PBXNativeTarget "DZNEmptyDataSet" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B2AAE4651C195F8100C8D200 /* Debug */,
-				B2AAE4661C195F8100C8D200 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		B2AAE46B1C195F8100C8D200 /* Build configuration list for PBXNativeTarget "DZNEmptyDataSetTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B2AAE4671C195F8100C8D200 /* Debug */,
-				B2AAE4681C195F8100C8D200 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 		B2B859361BF80B8C000F7308 /* Build configuration list for PBXProject "CBPhotoPicker" */ = {
 			isa = XCConfigurationList;

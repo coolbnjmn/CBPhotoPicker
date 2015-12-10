@@ -257,10 +257,17 @@ extension CBPhotoPickerViewController : UICollectionViewDataSource, UICollection
 
 extension CBPhotoPickerViewController : DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
     public func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = "Welcome"
+        let str = "You have no photos here, please come back with some pictures!"
         let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
         return NSAttributedString(string: str, attributes: attrs)
     }
+    
+    public func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
+        let str = "Go to camera"
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+
 }
 
 extension CBPhotoPickerViewController : PHPhotoLibraryChangeObserver {

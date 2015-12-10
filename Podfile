@@ -3,6 +3,8 @@
 
 target 'CBPhotoPicker' do
 
+pod 'DZNEmptyDataSet'
+
 end
 
 target 'CBPhotoPickerTests' do
