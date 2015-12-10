@@ -8,7 +8,7 @@ s.summary = "CBPhotoPicker is a customizable photo picker view controller for iO
 s.requires_arc = true
 
 # 2
-s.version = "0.1.17"
+s.version = "0.1.18"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -22,8 +22,8 @@ s.homepage = "https://github.com/coolbnjmn/CBPhotoPicker"
 # 6 - Replace this URL with your own Git URL from "Quick Setup"
 s.source = { :git => "https://github.com/coolbnjmn/CBPhotoPicker.git", :tag => "#{s.version}"}
 
-subspec "DZNEmptyDataSet" do |sp|
-  sp.source_files = "DZNEmptyDataSet/**/*.{h.m}"
+s.subspec "DZNEmptyDataSet" do |sp|
+  sp.source_files = "DZNEmptyDataSet/*.{h,m}"
 end
 
 # 7

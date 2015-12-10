@@ -16,6 +16,6 @@ FOUNDATION_EXPORT const unsigned char DZNEmptyDataSetVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <DZNEmptyDataSet/PublicHeader.h>
 
-#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
+#import "UIScrollView+EmptyDataSet.h"
 
 
