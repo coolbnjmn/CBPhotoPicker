@@ -48,6 +48,16 @@
                ReferencedContainer = "container:CBPhotoPicker.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B2AAE4561C195F8100C8D200"
+               BuildableName = "DZNEmptyDataSetTests.xctest"
+               BlueprintName = "DZNEmptyDataSetTests"
+               ReferencedContainer = "container:CBPhotoPicker.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

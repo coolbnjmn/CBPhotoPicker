@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>DZNEmptyDataSet.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -28,6 +33,16 @@
 			<true/>
 		</dict>
 		<key>B288A2741BF80CBB00646E58</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2AAE44D1C195F8100C8D200</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2AAE4561C195F8100C8D200</key>
 		<dict>
 			<key>primary</key>
 			<true/>

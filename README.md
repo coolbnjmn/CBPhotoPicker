@@ -90,6 +90,9 @@ Made a lot of changes:
 ### v0.1.14
 - Fixed tiny bug, should resolve a possible crash in a user's code.
 
+### v0.1.15
+- Added DZNEmptyDataSet as an imported framework, so as to have better no data scenarios for users. 
+
 ## In the Pipeline
 - add rotation back in
 - add more customization

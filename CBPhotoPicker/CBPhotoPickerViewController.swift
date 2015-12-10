@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import DZNEmptyDataSet
 
 public protocol CBPhotoPickerViewControllerDelegate {
     /**
@@ -160,6 +161,8 @@ public class CBPhotoPickerViewController: UIViewController {
             })
             photoCollectionView.delegate = self
             photoCollectionView.dataSource = self
+            photoCollectionView.emptyDataSetDelegate = self
+            photoCollectionView.emptyDataSetSource = self
         }
         
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
@@ -202,7 +205,7 @@ public class CBPhotoPickerViewController: UIViewController {
     
 extension CBPhotoPickerViewController : UICollectionViewDataSource, UICollectionViewDelegate {
         public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return photoAsset?.count ?? 0
+            return photoAsset?.count ?? 0 
         }
     
         public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
@@ -250,7 +253,15 @@ extension CBPhotoPickerViewController : UICollectionViewDataSource, UICollection
                 cell.layer.borderColor = UIColor.clearColor().CGColor
             }
         }
+}
+
+extension CBPhotoPickerViewController : DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
+    public func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Welcome"
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        return NSAttributedString(string: str, attributes: attrs)
     }
+}
 
 extension CBPhotoPickerViewController : PHPhotoLibraryChangeObserver {
         public func photoLibraryDidChange(changeInstance: PHChange) {
