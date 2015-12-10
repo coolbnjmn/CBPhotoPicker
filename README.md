@@ -93,6 +93,9 @@ Made a lot of changes:
 ### v0.1.15
 - Added DZNEmptyDataSet as an imported framework, so as to have better no data scenarios for users. 
 
+### v0.1.16-0.1.17
+- Fixing pod spec issues
+
 ## In the Pipeline
 - add rotation back in
 - add more customization
