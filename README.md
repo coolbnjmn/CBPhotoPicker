@@ -96,6 +96,10 @@ Made a lot of changes:
 ### v0.1.16-0.1.19
 - Fixing pod spec issues
 
+### v0.1.20
+UPDATE FROM 0.14 to THIS VERSION. 0.15-0.19 are junk, and do not work because of a failed importing of DZNEmptyDataSet
+v0.1.21 will include an empty state of my own creation. 
+
 ## In the Pipeline
 - add rotation back in
 - add more customization

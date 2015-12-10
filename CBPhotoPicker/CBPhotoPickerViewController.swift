@@ -8,7 +8,6 @@
 
 import UIKit
 import Photos
-import DZNEmptyDataSet
 
 public protocol CBPhotoPickerViewControllerDelegate {
     /**
@@ -161,8 +160,6 @@ public class CBPhotoPickerViewController: UIViewController {
             })
             photoCollectionView.delegate = self
             photoCollectionView.dataSource = self
-            photoCollectionView.emptyDataSetDelegate = self
-            photoCollectionView.emptyDataSetSource = self
         }
         
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
@@ -255,20 +252,20 @@ extension CBPhotoPickerViewController : UICollectionViewDataSource, UICollection
         }
 }
 
-extension CBPhotoPickerViewController : DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
-    public func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = "You have no photos here, please come back with some pictures!"
-        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
-        return NSAttributedString(string: str, attributes: attrs)
-    }
-    
-    public func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
-        let str = "Go to camera"
-        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
-        return NSAttributedString(string: str, attributes: attrs)
-    }
-
-}
+//extension CBPhotoPickerViewController : DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
+//    public func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+//        let str = "You have no photos here, please come back with some pictures!"
+//        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+//        return NSAttributedString(string: str, attributes: attrs)
+//    }
+//    
+//    public func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
+//        let str = "Go to camera"
+//        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+//        return NSAttributedString(string: str, attributes: attrs)
+//    }
+//
+//}
 
 extension CBPhotoPickerViewController : PHPhotoLibraryChangeObserver {
         public func photoLibraryDidChange(changeInstance: PHChange) {

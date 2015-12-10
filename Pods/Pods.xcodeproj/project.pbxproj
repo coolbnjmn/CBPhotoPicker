@@ -6,118 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		03D652F245EC57406662001A771FC85F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B7BDF5CE5CB8F095FE12DA55D9A9BB /* UIKit.framework */; };
-		31D310EAFEAE2031A6FD01DA61A1F22A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */; };
-		78CCDC7A763C6E61293E5BFB1A7EBB1A /* Pods-CBPhotoPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 900D9D94265E30D0DB20825950D52A6B /* Pods-CBPhotoPicker-dummy.m */; };
-		7F941B43E1B7FCF40736767DCE194D90 /* UIScrollView+EmptyDataSet.h in Headers */ = {isa = PBXBuildFile; fileRef = F45BEC5EADC21A5DD8CCCFF4B7BE73C3 /* UIScrollView+EmptyDataSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C3C4ECF279623FAB20FF8BB5425BE93C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */; };
-		D2914FEBF2C3D2F2E3F442C5506689E9 /* DZNEmptyDataSet-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C55075AE2F902F3A80FF062B0372FA2 /* DZNEmptyDataSet-dummy.m */; };
-		EF75BC735D336A3DF6DEB90F29DF5FAE /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9F0327905CE7274E44C2521345DAEB /* UIScrollView+EmptyDataSet.m */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		F945845A2952B169CDB373177BC907EF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 736E57AD5AEFAAF68D47AE4E8FCB8F68;
-			remoteInfo = DZNEmptyDataSet;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		1C55075AE2F902F3A80FF062B0372FA2 /* DZNEmptyDataSet-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DZNEmptyDataSet-dummy.m"; sourceTree = "<group>"; };
-		5BBDB7405C10A203228D483E4310190E /* libDZNEmptyDataSet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDZNEmptyDataSet.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		7F82663F60D125F30750052C726B7761 /* Pods-CBPhotoPicker-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CBPhotoPicker-resources.sh"; sourceTree = "<group>"; };
-		846114328398D859112D6F83093EA7C5 /* DZNEmptyDataSet-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DZNEmptyDataSet-prefix.pch"; sourceTree = "<group>"; };
-		8B1DBAE6CF915BDFD9B3B35BB6B16663 /* Pods-CBPhotoPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CBPhotoPicker.release.xcconfig"; sourceTree = "<group>"; };
-		900D9D94265E30D0DB20825950D52A6B /* Pods-CBPhotoPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CBPhotoPicker-dummy.m"; sourceTree = "<group>"; };
-		9B9F0327905CE7274E44C2521345DAEB /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+EmptyDataSet.m"; path = "Source/UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
-		9EB228AE83A3D3CFA3CCFE6BE62179B8 /* Pods-CBPhotoPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CBPhotoPicker.debug.xcconfig"; sourceTree = "<group>"; };
-		A12CCE61E6CA70DE7102E367E0A09509 /* Pods-CBPhotoPicker-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CBPhotoPicker-acknowledgements.plist"; sourceTree = "<group>"; };
-		B5900F6B3BDC4F60BB5510AE23236914 /* Pods-CBPhotoPicker-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CBPhotoPicker-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B5DE1BE3020DA690A7B10F40AA8686D4 /* libPods-CBPhotoPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CBPhotoPicker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		C3B7BDF5CE5CB8F095FE12DA55D9A9BB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		DB8DBF441C757013E8BBD2239D26F2CC /* Pods-CBPhotoPicker-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CBPhotoPicker-frameworks.sh"; sourceTree = "<group>"; };
-		DC5D6A3B3FAB895A628008240F23270A /* DZNEmptyDataSet.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DZNEmptyDataSet.xcconfig; sourceTree = "<group>"; };
-		F45BEC5EADC21A5DD8CCCFF4B7BE73C3 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+EmptyDataSet.h"; path = "Source/UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFrameworksBuildPhase section */
-		360EEE3FA0C21A0399944F45FF502501 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				31D310EAFEAE2031A6FD01DA61A1F22A /* Foundation.framework in Frameworks */,
-				03D652F245EC57406662001A771FC85F /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		94B598BF3DABB7281DF8F6FDC7250CC8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C3C4ECF279623FAB20FF8BB5425BE93C /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
 /* Begin PBXGroup section */
-		18340F12838DEE43507667CC74401EB1 /* iOS */ = {
+		09C5E90726D2521A760312DBF50D9358 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */,
-				C3B7BDF5CE5CB8F095FE12DA55D9A9BB /* UIKit.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		2463C7414287D5192D6DC70405F51AF0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5BBDB7405C10A203228D483E4310190E /* libDZNEmptyDataSet.a */,
-				B5DE1BE3020DA690A7B10F40AA8686D4 /* libPods-CBPhotoPicker.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2ED0F5807AA04945C527A73A56BCDBDF /* DZNEmptyDataSet */ = {
+		0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F45BEC5EADC21A5DD8CCCFF4B7BE73C3 /* UIScrollView+EmptyDataSet.h */,
-				9B9F0327905CE7274E44C2521345DAEB /* UIScrollView+EmptyDataSet.m */,
-				3B12BF09F33E53C99DA443D8576D7217 /* Support Files */,
-			);
-			path = DZNEmptyDataSet;
-			sourceTree = "<group>";
-		};
-		391E7CF3BE0B277DC3EF26607E1B9DD1 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2ED0F5807AA04945C527A73A56BCDBDF /* DZNEmptyDataSet */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		3B12BF09F33E53C99DA443D8576D7217 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				DC5D6A3B3FAB895A628008240F23270A /* DZNEmptyDataSet.xcconfig */,
-				1C55075AE2F902F3A80FF062B0372FA2 /* DZNEmptyDataSet-dummy.m */,
-				846114328398D859112D6F83093EA7C5 /* DZNEmptyDataSet-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/DZNEmptyDataSet";
-			sourceTree = "<group>";
-		};
-		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				18340F12838DEE43507667CC74401EB1 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -126,85 +29,20 @@
 			isa = PBXGroup;
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
-				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
-				391E7CF3BE0B277DC3EF26607E1B9DD1 /* Pods */,
-				2463C7414287D5192D6DC70405F51AF0 /* Products */,
-				BAE91E96B4625F4C4454D5CB09DFBA70 /* Targets Support Files */,
+				0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */,
+				09C5E90726D2521A760312DBF50D9358 /* Products */,
+				F6CCA5D896907CE7506C37FD31FC265A /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		BAE91E96B4625F4C4454D5CB09DFBA70 /* Targets Support Files */ = {
+		F6CCA5D896907CE7506C37FD31FC265A /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				F26ADD1D2318BF18A9F623A05C609EA2 /* Pods-CBPhotoPicker */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		F26ADD1D2318BF18A9F623A05C609EA2 /* Pods-CBPhotoPicker */ = {
-			isa = PBXGroup;
-			children = (
-				B5900F6B3BDC4F60BB5510AE23236914 /* Pods-CBPhotoPicker-acknowledgements.markdown */,
-				A12CCE61E6CA70DE7102E367E0A09509 /* Pods-CBPhotoPicker-acknowledgements.plist */,
-				900D9D94265E30D0DB20825950D52A6B /* Pods-CBPhotoPicker-dummy.m */,
-				DB8DBF441C757013E8BBD2239D26F2CC /* Pods-CBPhotoPicker-frameworks.sh */,
-				7F82663F60D125F30750052C726B7761 /* Pods-CBPhotoPicker-resources.sh */,
-				9EB228AE83A3D3CFA3CCFE6BE62179B8 /* Pods-CBPhotoPicker.debug.xcconfig */,
-				8B1DBAE6CF915BDFD9B3B35BB6B16663 /* Pods-CBPhotoPicker.release.xcconfig */,
-			);
-			name = "Pods-CBPhotoPicker";
-			path = "Target Support Files/Pods-CBPhotoPicker";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		48B2BA5F3935DE22852A7EFF05B89EE6 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7F941B43E1B7FCF40736767DCE194D90 /* UIScrollView+EmptyDataSet.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
-/* Begin PBXNativeTarget section */
-		736E57AD5AEFAAF68D47AE4E8FCB8F68 /* DZNEmptyDataSet */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C1C847BA639995C48B89DF3C96C3A6FB /* Build configuration list for PBXNativeTarget "DZNEmptyDataSet" */;
-			buildPhases = (
-				B6C2166CDEB842A61247B874390A5673 /* Sources */,
-				360EEE3FA0C21A0399944F45FF502501 /* Frameworks */,
-				48B2BA5F3935DE22852A7EFF05B89EE6 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DZNEmptyDataSet;
-			productName = DZNEmptyDataSet;
-			productReference = 5BBDB7405C10A203228D483E4310190E /* libDZNEmptyDataSet.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		F4D137B42B66BB3348C7055B3AB7C35D /* Pods-CBPhotoPicker */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6600C78ECB747ED61C88BBA4B5BFB220 /* Build configuration list for PBXNativeTarget "Pods-CBPhotoPicker" */;
-			buildPhases = (
-				AC1B70125FBBE9A90873063BF2D0F3F6 /* Sources */,
-				94B598BF3DABB7281DF8F6FDC7250CC8 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F31DE0A8B5A34F01040A3498FFBF78C5 /* PBXTargetDependency */,
-			);
-			name = "Pods-CBPhotoPicker";
-			productName = "Pods-CBPhotoPicker";
-			productReference = B5DE1BE3020DA690A7B10F40AA8686D4 /* libPods-CBPhotoPicker.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
@@ -221,98 +59,15 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 2463C7414287D5192D6DC70405F51AF0 /* Products */;
+			productRefGroup = 09C5E90726D2521A760312DBF50D9358 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				736E57AD5AEFAAF68D47AE4E8FCB8F68 /* DZNEmptyDataSet */,
-				F4D137B42B66BB3348C7055B3AB7C35D /* Pods-CBPhotoPicker */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXSourcesBuildPhase section */
-		AC1B70125FBBE9A90873063BF2D0F3F6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				78CCDC7A763C6E61293E5BFB1A7EBB1A /* Pods-CBPhotoPicker-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B6C2166CDEB842A61247B874390A5673 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D2914FEBF2C3D2F2E3F442C5506689E9 /* DZNEmptyDataSet-dummy.m in Sources */,
-				EF75BC735D336A3DF6DEB90F29DF5FAE /* UIScrollView+EmptyDataSet.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		F31DE0A8B5A34F01040A3498FFBF78C5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DZNEmptyDataSet;
-			target = 736E57AD5AEFAAF68D47AE4E8FCB8F68 /* DZNEmptyDataSet */;
-			targetProxy = F945845A2952B169CDB373177BC907EF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		043247DC5A32FC6AD32BF541C935DA6A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B1DBAE6CF915BDFD9B3B35BB6B16663 /* Pods-CBPhotoPicker.release.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		4FB5EAC5D10FE5E7440B512898A20E1F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9EB228AE83A3D3CFA3CCFE6BE62179B8 /* Pods-CBPhotoPicker.debug.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		8731B32571996258F12A91EF968FADF9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DC5D6A3B3FAB895A628008240F23270A /* DZNEmptyDataSet.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/DZNEmptyDataSet/DZNEmptyDataSet-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
 		C074F63C9EE7CB4D8C618390A32CEC35 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -386,24 +141,6 @@
 			};
 			name = Release;
 		};
-		EE78915748EA247533243BE8B5E791EB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DC5D6A3B3FAB895A628008240F23270A /* DZNEmptyDataSet.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/DZNEmptyDataSet/DZNEmptyDataSet-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -412,24 +149,6 @@
 			buildConfigurations = (
 				C074F63C9EE7CB4D8C618390A32CEC35 /* Debug */,
 				E43846B588E1892F3093F3B7082B6DFB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6600C78ECB747ED61C88BBA4B5BFB220 /* Build configuration list for PBXNativeTarget "Pods-CBPhotoPicker" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4FB5EAC5D10FE5E7440B512898A20E1F /* Debug */,
-				043247DC5A32FC6AD32BF541C935DA6A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C1C847BA639995C48B89DF3C96C3A6FB /* Build configuration list for PBXNativeTarget "DZNEmptyDataSet" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8731B32571996258F12A91EF968FADF9 /* Debug */,
-				EE78915748EA247533243BE8B5E791EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
