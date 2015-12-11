@@ -65,19 +65,10 @@ public class CBImageView: UIScrollView {
     }
     
     func setupScrollView() {
-        print(frame)
-        print(self.imageView?.frame)
-        print(self.imageView?.image?.size)
-        print(imageView?.image?.size)
-        print("+++++++")
-        
         if let imageSize = imageView?.image?.size where imageSize.width > imageView?.frame.size.width || imageSize.height > imageView?.frame.size.height {
             self.contentSize = imageSize
             self.zoomScale = self.minimumZoomScale
         }
-        
-        print(self.contentSize)
-        print(self.contentOffset)
         
         if let image = imageView?.image {
             let widthScaleFactor = self.bounds.width / image.size.width

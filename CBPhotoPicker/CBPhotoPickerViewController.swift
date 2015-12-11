@@ -105,6 +105,7 @@ public class CBPhotoPickerViewController: UIViewController {
     public var originalFrame : CGRect
     public var imageAspectRatio : CGFloat
 
+    public var didSelectImage : Bool = false
     public var placeholderImage : UIImage?
     public var delegate : CBPhotoPickerViewControllerDelegate?
     public var style : CBPhotoPickerStyle
@@ -257,8 +258,10 @@ extension CBPhotoPickerViewController : UICollectionViewDataSource, UICollection
         public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
             CBPhotoLibraryManager.sharedInstance.thumbnailAtIndex(indexPath.item, size: CGSizeMake(view.bounds.width, view.bounds.width), completion: {
                 (asset: PHAsset, image: UIImage?) in
+                
                 if let image = image {
                     self.previewImageView?.imageView?.loadNewImage(image)
+                    self.didSelectImage = true
                 }
                 
                 if let cell = collectionView.cellForItemAtIndexPath(indexPath) {

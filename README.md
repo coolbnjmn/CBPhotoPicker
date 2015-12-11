@@ -103,6 +103,9 @@ v0.1.21 will include an empty state of my own creation.
 ### v0.1.21
 - Finally got empty states working. Now when you have no pictures in your library, a camera prompt will be shown which will allow you to take a picture. 
 
+### v0.1.22
+- Added a public flag that tells you if the user has already selected an image or not
+
 ## In the Pipeline
 - add rotation back in
 - add more customization
