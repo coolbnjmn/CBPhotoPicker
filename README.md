@@ -100,6 +100,9 @@ Made a lot of changes:
 UPDATE FROM 0.14 to THIS VERSION. 0.15-0.19 are junk, and do not work because of a failed importing of DZNEmptyDataSet
 v0.1.21 will include an empty state of my own creation. 
 
+### v0.1.21
+- Finally got empty states working. Now when you have no pictures in your library, a camera prompt will be shown which will allow you to take a picture. 
+
 ## In the Pipeline
 - add rotation back in
 - add more customization

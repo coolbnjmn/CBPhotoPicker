@@ -78,7 +78,26 @@ public class CBPhotoPickerViewController: UIViewController {
     
     var previewImageView: CBContainerView?
     var photoCollectionView: UICollectionView?
+    var emptyStateView : UIView?
     var previewPhotoFrame : CGRect = CGRectZero
+    
+    lazy var photoPickerController: UIImagePickerController? = {
+        [weak self] in
+        
+        if let strongSelf = self {
+            let pPC = UIImagePickerController()
+            
+            #if (arch(i386) || arch(x86_64)) && os(iOS)
+                pPC.sourceType = .PhotoLibrary
+            #else
+                pPC.sourceType = .Camera
+            #endif
+            
+            pPC.delegate = strongSelf
+            return pPC
+        }
+        return nil
+    }()
     
     var photoCollectionViewFlowLayout: UICollectionViewFlowLayout?
     var photoAsset : PHFetchResult?
@@ -202,7 +221,12 @@ public class CBPhotoPickerViewController: UIViewController {
     
 extension CBPhotoPickerViewController : UICollectionViewDataSource, UICollectionViewDelegate {
         public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return photoAsset?.count ?? 0 
+            let count = photoAsset?.count ?? 0
+            
+            if count == 0 {
+                setupAndShowEmptyStateView(collectionView)
+            }
+            return count
         }
     
         public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
@@ -252,20 +276,83 @@ extension CBPhotoPickerViewController : UICollectionViewDataSource, UICollection
         }
 }
 
-//extension CBPhotoPickerViewController : DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
-//    public func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-//        let str = "You have no photos here, please come back with some pictures!"
-//        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
-//        return NSAttributedString(string: str, attributes: attrs)
-//    }
-//    
-//    public func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
-//        let str = "Go to camera"
-//        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
-//        return NSAttributedString(string: str, attributes: attrs)
-//    }
-//
-//}
+extension CBPhotoPickerViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    public func dismissAndReloadData(image: UIImage, error: NSError, contextInfo: AnyObject) {
+        
+    }
+    
+    public func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
+        if error == nil {
+            photoPickerController?.dismissViewControllerAnimated(true, completion: {
+                CBPhotoLibraryManager.sharedInstance.retrieveAllPhotos({ result in
+                    self.photoAsset = result
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.photoCollectionView?.reloadData()
+                    })
+                })
+            })
+        } else {
+            if let photoCollectionView = photoCollectionView {
+                setupAndShowEmptyStateView(photoCollectionView)
+            }
+        }
+    }
+    
+    public func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        emptyStateView?.removeFromSuperview()
+        if let tempImage : UIImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            UIImageWriteToSavedPhotosAlbum(tempImage, self, "image:didFinishSavingWithError:contextInfo:", nil)
+        }
+    }
+    
+    public func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        photoPickerController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+
+extension CBPhotoPickerViewController {
+    public func goToCameraPresed(sender: AnyObject) {
+        if let photoPickerController = photoPickerController {
+            presentViewController(photoPickerController, animated: true, completion: nil)
+        }
+    }
+    
+    public func setupAndShowEmptyStateView(collectionView: UICollectionView) {
+        emptyStateView = UIView(frame: collectionView.frame)
+            
+        if let emptyStateView = emptyStateView {
+            emptyStateView.alpha = 0
+            emptyStateView.backgroundColor = UIColor.clearColor()
+            collectionView.superview?.addSubview(emptyStateView)
+            emptyStateView.center = collectionView.center
+            let infoLabelHeight : CGFloat = 30
+            let infoLabel : UILabel = UILabel(frame: CGRectMake(0, 0, collectionView.bounds.size.width, infoLabelHeight))
+            infoLabel.text = "Please add photos to your library!"
+            infoLabel.textAlignment = .Center
+            infoLabel.textColor = style.tintColor
+            
+            infoLabel.center = emptyStateView.center
+            let cameraButton : UIButton = UIButton(frame: CGRectMake(0, 0, collectionView.bounds.size.width, infoLabelHeight))
+            cameraButton.setTitle("Go to Camera", forState: .Normal)
+            cameraButton.setTitleColor(style.selectionColor, forState: .Normal)
+            cameraButton.addTarget(self, action: "goToCameraPresed:", forControlEvents: .TouchUpInside)
+            cameraButton.titleLabel?.textAlignment = .Center
+            cameraButton.center = emptyStateView.center
+            cameraButton.frame.origin.y += infoLabelHeight
+            
+            infoLabel.frame.origin.y -= emptyStateView.frame.origin.y
+            cameraButton.frame.origin.y -= emptyStateView.frame.origin.y
+            emptyStateView.addSubview(infoLabel)
+            emptyStateView.addSubview(cameraButton)
+            
+            UIView.animateWithDuration(1, animations: {
+                emptyStateView.alpha = 1
+                }, completion: nil)
+        }
+    }
+    
+}
+
 
 extension CBPhotoPickerViewController : PHPhotoLibraryChangeObserver {
         public func photoLibraryDidChange(changeInstance: PHChange) {
