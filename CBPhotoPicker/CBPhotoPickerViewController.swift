@@ -226,7 +226,10 @@ extension CBPhotoPickerViewController : UICollectionViewDataSource, UICollection
             
             if count == 0 {
                 setupAndShowEmptyStateView(collectionView)
+            } else {
+                hideEmptyStateView()
             }
+            
             return count
         }
     
@@ -318,6 +321,16 @@ extension CBPhotoPickerViewController {
         if let photoPickerController = photoPickerController {
             presentViewController(photoPickerController, animated: true, completion: nil)
         }
+    }
+    
+    public func hideEmptyStateView() {
+        UIView.animateWithDuration(0.1, animations: {
+                self.emptyStateView?.alpha = 0
+            }, completion: {
+                _ in
+                self.emptyStateView?.removeFromSuperview()
+                self.emptyStateView = nil
+        })
     }
     
     public func setupAndShowEmptyStateView(collectionView: UICollectionView) {
