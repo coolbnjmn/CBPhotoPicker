@@ -106,6 +106,9 @@ v0.1.21 will include an empty state of my own creation.
 ### v0.1.22
 - Added a public flag that tells you if the user has already selected an image or not
 
+### v0.1.23
+- Fixed an empty state issue where the empty state would be overlayed on top of photos in certain cases
+
 ## In the Pipeline
 - add rotation back in
 - add more customization
