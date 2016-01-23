@@ -139,7 +139,7 @@ public class CBPhotoPickerViewController: UIViewController {
     public override func loadView() {
         view = UIView(frame: originalFrame)
         let previewImageHeight : CGFloat = originalFrame.width/imageAspectRatio
-        previewImageView = CBContainerView(frame: CGRectMake(0, originalFrame.origin.y, originalFrame.width, previewImageHeight))
+        previewImageView = CBContainerView(frame: CGRectMake(0, 0, originalFrame.width, previewImageHeight))
         previewImageView?.userInteractionEnabled = true
         previewImageView?.backgroundColor = UIColor.clearColor()
         previewImageView?.shouldShowOverlay = style.gridOverlayOn
@@ -147,7 +147,7 @@ public class CBPhotoPickerViewController: UIViewController {
         photoCollectionViewFlowLayout?.itemSize = CGSizeMake(originalFrame.width/3, originalFrame.width/3)
         photoCollectionViewFlowLayout?.minimumInteritemSpacing = 0
         photoCollectionViewFlowLayout?.minimumLineSpacing = 0
-        photoCollectionView = UICollectionView(frame: CGRectMake(0, originalFrame.origin.y+previewImageHeight, originalFrame.width, originalFrame.height-previewImageHeight), collectionViewLayout: photoCollectionViewFlowLayout ?? UICollectionViewFlowLayout())
+        photoCollectionView = UICollectionView(frame: CGRectMake(0, previewImageHeight, originalFrame.width, originalFrame.height-previewImageHeight), collectionViewLayout: photoCollectionViewFlowLayout ?? UICollectionViewFlowLayout())
         photoCollectionView?.backgroundColor = UIColor.darkGrayColor()
         
         
@@ -342,13 +342,13 @@ extension CBPhotoPickerViewController {
             collectionView.superview?.addSubview(emptyStateView)
             emptyStateView.center = collectionView.center
             let infoLabelHeight : CGFloat = 30
-            let infoLabel : UILabel = UILabel(frame: CGRectMake(0, originalFrame.origin.y, collectionView.bounds.size.width, infoLabelHeight))
+            let infoLabel : UILabel = UILabel(frame: CGRectMake(0, 0, collectionView.bounds.size.width, infoLabelHeight))
             infoLabel.text = "Please add photos to your library!"
             infoLabel.textAlignment = .Center
             infoLabel.textColor = style.tintColor
             
             infoLabel.center = emptyStateView.center
-            let cameraButton : UIButton = UIButton(frame: CGRectMake(0, originalFrame.origin.y, collectionView.bounds.size.width, infoLabelHeight))
+            let cameraButton : UIButton = UIButton(frame: CGRectMake(0, 0, collectionView.bounds.size.width, infoLabelHeight))
             cameraButton.setTitle("Go to Camera", forState: .Normal)
             cameraButton.setTitleColor(style.selectionColor, forState: .Normal)
             cameraButton.addTarget(self, action: "goToCameraPresed:", forControlEvents: .TouchUpInside)
