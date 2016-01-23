@@ -109,6 +109,8 @@ v0.1.21 will include an empty state of my own creation.
 ### v0.1.23
 - Fixed an empty state issue where the empty state would be overlayed on top of photos in certain cases
 
+### v0.1.28
+- Reverting
 ## In the Pipeline
 - add rotation back in
 - add more customization
