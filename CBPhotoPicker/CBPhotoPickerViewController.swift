@@ -147,7 +147,7 @@ public class CBPhotoPickerViewController: UIViewController {
         photoCollectionViewFlowLayout?.itemSize = CGSizeMake(originalFrame.width/3, originalFrame.width/3)
         photoCollectionViewFlowLayout?.minimumInteritemSpacing = 0
         photoCollectionViewFlowLayout?.minimumLineSpacing = 0
-        photoCollectionView = UICollectionView(frame: CGRectMake(0, originalFrame.origin.y+previewImageHeight, originalFrame.width, originalFrame.height-previewImageHeight-originalFrame.origin.y), collectionViewLayout: photoCollectionViewFlowLayout ?? UICollectionViewFlowLayout())
+        photoCollectionView = UICollectionView(frame: CGRectMake(0, originalFrame.origin.y+previewImageHeight, originalFrame.width, originalFrame.height-previewImageHeight), collectionViewLayout: photoCollectionViewFlowLayout ?? UICollectionViewFlowLayout())
         photoCollectionView?.backgroundColor = UIColor.darkGrayColor()
         
         

@@ -8,7 +8,7 @@ s.summary = "CBPhotoPicker is a customizable photo picker view controller for iO
 s.requires_arc = true
 
 # 2
-s.version = "0.1.25"
+s.version = "0.1.24"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
