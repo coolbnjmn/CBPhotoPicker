@@ -2,4 +2,54 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CBPhotoPicker/CBPhotoPickerViewController.swift"
+            timestampString = "477975863.50326"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "applicationEnteredForeground(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CBPhotoPickerDemo.CBPhotoPickerViewController.applicationEnteredForeground (CBPhotoPickerDemo.CBPhotoPickerViewController)(Swift.AnyObject) -&gt; ()"
+                  moduleName = "CBPhotoPickerDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/benjaminhendricks/Developer/Libraries/CBPhotoPicker/CBPhotoPicker/CBPhotoPickerViewController.swift"
+                  timestampString = "477976392.102629"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "209"
+                  endingLineNumber = "209"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CBPhotoPickerDemo.CBPhotoPickerViewController.(applicationEnteredForeground (CBPhotoPickerDemo.CBPhotoPickerViewController) -&gt; (Swift.AnyObject) -&gt; ()).(closure #1)"
+                  moduleName = "CBPhotoPickerDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/benjaminhendricks/Developer/Libraries/CBPhotoPicker/CBPhotoPicker/CBPhotoPickerViewController.swift"
+                  timestampString = "477976392.103053"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "210"
+                  endingLineNumber = "210"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

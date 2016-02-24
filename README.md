@@ -111,7 +111,12 @@ v0.1.21 will include an empty state of my own creation.
 
 ### v0.1.24-v0.1.28
 - No changes, all changes were reverted
+
+### v0.1.29
+- Added deep link to settings if access is denied to allow access. Better handling of this will come soon! 
+
 ## In the Pipeline
+
 - add rotation back in
 - add more customization
 - better grid layout helper

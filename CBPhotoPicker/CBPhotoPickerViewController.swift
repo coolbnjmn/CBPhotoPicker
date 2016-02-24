@@ -172,7 +172,12 @@ public class CBPhotoPickerViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     override public func viewDidLoad() {
+        checkIfAuthorized(PHPhotoLibrary.authorizationStatus())
         if let photoCollectionView = photoCollectionView {
             CBPhotoLibraryManager.sharedInstance.retrieveAllPhotos({ result in
                 self.photoAsset = result
@@ -195,6 +200,16 @@ public class CBPhotoPickerViewController: UIViewController {
         }
         super.viewDidLoad()
 
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationEnteredForeground:", name: UIApplicationWillEnterForegroundNotification, object: nil)
+
+    }
+
+    func applicationEnteredForeground(sender: AnyObject) {
+        checkIfAuthorized(PHPhotoLibrary.authorizationStatus())
+        CBPhotoLibraryManager.sharedInstance.retrieveAllPhotos({ result in
+            self.photoAsset = result
+            self.photoCollectionView?.reloadData()
+        })
     }
     
     override public func viewDidAppear(animated: Bool) {
@@ -319,7 +334,13 @@ extension CBPhotoPickerViewController : UIImagePickerControllerDelegate, UINavig
 extension CBPhotoPickerViewController {
     public func goToCameraPresed(sender: AnyObject) {
         if let photoPickerController = photoPickerController {
-            presentViewController(photoPickerController, animated: true, completion: nil)
+            if PHPhotoLibrary.authorizationStatus() == .Denied {
+                if let appSettings = NSURL(string: UIApplicationOpenSettingsURLString) {
+                    UIApplication.sharedApplication().openURL(appSettings)
+                }
+            } else {
+                presentViewController(photoPickerController, animated: true, completion: nil)
+            }
         }
     }
     
@@ -335,7 +356,8 @@ extension CBPhotoPickerViewController {
     
     public func setupAndShowEmptyStateView(collectionView: UICollectionView) {
         emptyStateView = UIView(frame: collectionView.frame)
-            
+        
+        
         if let emptyStateView = emptyStateView {
             emptyStateView.alpha = 0
             emptyStateView.backgroundColor = UIColor.clearColor()
@@ -343,13 +365,18 @@ extension CBPhotoPickerViewController {
             emptyStateView.center = collectionView.center
             let infoLabelHeight : CGFloat = 30
             let infoLabel : UILabel = UILabel(frame: CGRectMake(0, 0, collectionView.bounds.size.width, infoLabelHeight))
-            infoLabel.text = "Please add photos to your library!"
             infoLabel.textAlignment = .Center
             infoLabel.textColor = style.tintColor
             
             infoLabel.center = emptyStateView.center
             let cameraButton : UIButton = UIButton(frame: CGRectMake(0, 0, collectionView.bounds.size.width, infoLabelHeight))
-            cameraButton.setTitle("Go to Camera", forState: .Normal)
+            if PHPhotoLibrary.authorizationStatus() != .Authorized {
+                cameraButton.setTitle("Go to Settings to allow access to photos", forState: .Normal)
+                infoLabel.text = "Go to Settings to allow access to photos"
+            } else {
+                cameraButton.setTitle("Go to Camera", forState: .Normal)
+                infoLabel.text = "Please add photos to your library!"
+            }
             cameraButton.setTitleColor(style.selectionColor, forState: .Normal)
             cameraButton.addTarget(self, action: "goToCameraPresed:", forControlEvents: .TouchUpInside)
             cameraButton.titleLabel?.textAlignment = .Center
@@ -382,6 +409,7 @@ extension CBPhotoPickerViewController : PHPhotoLibraryChangeObserver {
                 })
             } else if status == .Denied {
                 // handle this appropriately
+                
             } else if status == .Authorized {
                 CBPhotoLibraryManager.sharedInstance.retrieveAllPhotos({ result in
                     self.photoAsset = result
